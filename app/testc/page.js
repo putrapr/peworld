@@ -5,11 +5,14 @@ import Input from '@/components/base/Input'
 import Nav from '@/components/module/Navbar/navBeforeLogin'
 import Nav2 from '@/components/module/Navbar/navAfterLogin'
 import Footer from '@/components/module/Footer'
+import Section1 from '@/components/template/Landing/section1'
+
 
 export default function Home() {
   return (
     <>
-      <Footer/>
+      <Section1 />
+      {/* <Footer/> */}
       {/* <Nav2/> */}
       
       {/* <h1>Hii</h1>

@@ -6,12 +6,14 @@ import Nav from '@/components/module/Navbar/navBeforeLogin'
 import Nav2 from '@/components/module/Navbar/navAfterLogin'
 import Footer from '@/components/module/Footer'
 import Section1 from '@/components/template/Landing/section1'
+import Section2 from '@/components/template/Landing/section2'
 
 
 export default function Home() {
   return (
     <>
-      <Section1 />
+      <Section2 />
+      {/* <Section1 /> */}
       {/* <Footer/> */}
       {/* <Nav2/> */}
       

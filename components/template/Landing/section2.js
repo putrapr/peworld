@@ -32,7 +32,7 @@ const section2 = () => {
                 width={21}
                 height={21}
                 />
-                <p>{item}</p>                
+                <p className='text-[#46505C]'>{item}</p>                
               </div>
             ))
           }

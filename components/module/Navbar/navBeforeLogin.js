@@ -6,10 +6,10 @@ import Button from '@/components/base/Button'
 
 const navBeforeLogin = () => {
   return (
-    <div className='absolute bg-white flex items-center justify-between w-full h-[100px] top-0 px-[8.5rem]'>
+    <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 px-[8.5rem]'>
       <Link href="/dashboard">
         <Image
-          src="/peworld.svg"
+          src="/icons/logo-purple.svg"
           alt="peworld logo"
           width = {127}
           height = {35}
@@ -20,7 +20,7 @@ const navBeforeLogin = () => {
         <Button className='w-20 h-10 text-sm'>Daftar</Button>
       </div>
 
-    </div>
+    </nav>
   )
 }
 

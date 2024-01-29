@@ -9,11 +9,13 @@ import Section1 from '@/components/template/Landing/section1'
 import Section2 from '@/components/template/Landing/section2'
 import Section3 from '@/components/template/Landing/section3'
 import Section4 from '@/components/template/Landing/section4'
+import Section5 from '@/components/template/Landing/section5'
 
 export default function Home() {
   return (
     <>
-      <Section4 />
+      <Section5 />
+      {/* <Section4 /> */}
       {/* <Section3 /> */}
       {/* <Section2 /> */}
       {/* <Section1 /> */}

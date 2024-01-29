@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 
-const section1 = () => {
+const section1 = ({ className }) => {
   return (
-    <section className='grid grid-cols-5 pl-[8.5rem] pr-28'>
+    <section className={`grid grid-cols-5 ${className}`}>
       <div id='left-side' className='col-span-2'>
-        <div className='w-[450px] mt-36'>
+        <div className='w-[450px] mt-32'>
           <h1 className='text-5xl leading-normal'>Talenta terbaik negri untuk perubahan revolusi 4.0</h1>              
         </div>
         <p className='text-lg text-[#46505C] mt-4'>
@@ -15,7 +15,7 @@ const section1 = () => {
         <p className='text-[#46505C]'>
           Ciptakan mulai dari sini
         </p>
-        <Button className='w-52 h-16 mt-14'>Mulai Dari Sekarang</Button>
+        <Button className='w-48 h-16 mt-14 text-sm'>Mulai Dari Sekarang</Button>
       </div>
 
       <div id='right-side' className='col-span-3 flex justify-end'>

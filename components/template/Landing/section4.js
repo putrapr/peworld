@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const section4 = () => {
+const section4 = ({ className }) => {
   const data = [
     {
       image: '/img/landing/4.svg',
@@ -23,8 +23,8 @@ const section4 = () => {
     }
   ]
   return (
-    <div className='py-28 bg-[#FAFBFC] mt-40'>
-      <div className='flex justify-center mb-12'>
+    <section className={`bg-[#FAFBFC] ${className}`}>
+      <div className='flex justify-center mb-14'>
         <h1 className='text-4xl'>Opini mereka tentang peworld</h1>
       </div>
       
@@ -32,7 +32,7 @@ const section4 = () => {
       <div className='flex justify-center gap-6'>
         {
           data.map((item, index) => (
-            <div key={index} className='w-80 h-[440px] p-12 bg-white flex flex-col items-center' style={{ filter: 'drop-shadow(0 5px 4px #e4e4ec)' }}>
+            <div key={index} className='w-80 h-[410px] p-12 bg-white flex flex-col items-center' style={{ filter: 'drop-shadow(0 5px 4px #e4e4ec)' }}>
               <Image 
                 src={item.image}
                 alt="dp"
@@ -46,7 +46,7 @@ const section4 = () => {
           ))
         }
       </div>
-    </div>
+    </section>
   )
 }
 

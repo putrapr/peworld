@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 
-const section5 = () => {
+const section5 = ({ className }) => {
   
   return (
-    <div className='text-white flex justify-center items-center h-[450px] p-36'>
-      <div className='w-full h-56 bg-[#5E50A1] rounded bg-[url("/img/landing/wave.svg")] bg-no-repeat bg-cover'>
+    <section className={`w-full text-white flex justify-center items-center ${className}`}>
+      <div className='w-full h-52 bg-[#5E50A1] rounded-[40px_8px] bg-[url("/img/landing/wave.svg")] bg-no-repeat bg-cover'>
         <div className='flex justify-between items-center p-16'>
           <div>
             <h1 className='w-80 text-white text-4xl'>Masih Ragu ?</h1>
@@ -17,7 +17,7 @@ const section5 = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

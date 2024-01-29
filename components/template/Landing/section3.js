@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 
-const section3 = () => {
+const section3 = ({ className }) => {
   const arrSkill1 = [ 'Java', 'Kotlin', 'PHP', 'Javascript']
   const arrSkill2 = ['Golang', 'C++', 'Ruby', '10+ Bahasa lainnya']
 
   return (
-    <div className='grid grid-cols-2 pr-24'>
+    <div className={`grid grid-cols-2 ${className}`}>
       <div id='left-side' className='flex justify-end'>
         <div className='-mr-20'>
           <div className='w-[400px] mt-20'>

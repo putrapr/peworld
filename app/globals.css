@@ -33,4 +33,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .shadow-ring {
+    filter: drop-shadow(1px 1px 1px #eeeef1) drop-shadow(-1px -1px 1px #eeeef1)
+  }
 }

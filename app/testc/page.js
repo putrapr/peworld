@@ -15,8 +15,8 @@ import Section2W from '@/components/template/Worker/section2'
 export default function Home() {
   return (
     <>
-    
-      <Section2W />
+    <Input className='mb-3' placeholder="Masukan nama lengkap" label='Nama Lengkap'/>
+      {/* <Section2W /> */}
       {/* <Section5 /> */}
       {/* <Section4 /> */}
       {/* <Section3 /> */}

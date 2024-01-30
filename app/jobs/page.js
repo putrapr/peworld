@@ -94,13 +94,11 @@ const jobs = () => {
         </div>
 
         <div className='bg-white w-full mt-16 shadow-ring rounded-lg'>
-          
           {
             worker.map((item, index) => (
               <Card data={item} key={index}/>
             ))
           }
-
         </div>
 
         <div className='w-full flex justify-center gap-4 mt-14 h-44'>

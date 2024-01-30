@@ -10,11 +10,14 @@ import Section2 from '@/components/template/Landing/section2'
 import Section3 from '@/components/template/Landing/section3'
 import Section4 from '@/components/template/Landing/section4'
 import Section5 from '@/components/template/Landing/section5'
+import Section2W from '@/components/template/Worker/section2'
 
 export default function Home() {
   return (
     <>
-      <Section5 />
+    
+      <Section2W />
+      {/* <Section5 /> */}
       {/* <Section4 /> */}
       {/* <Section3 /> */}
       {/* <Section2 /> */}

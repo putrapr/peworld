@@ -6,7 +6,7 @@ import Button from '@/components/base/Button'
 
 const navBeforeLogin = () => {
   return (
-    <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 px-[6.5rem]'>
+    <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 px-[6.5rem] drop-shadow-md'>
       <Link href="/dashboard">
         <Image
           src="/icons/logo-purple.svg"

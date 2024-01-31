@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 
-const index = () => {
+const index = ({className}) => {
   return (
-    <footer className='w-full h-[330px] bg-[#5E50A1]'>      
+    <footer className={`w-full h-[330px] bg-[#5E50A1] ${className}`}>      
       <div className='flex flex-col mx-[8.5rem]'>
         <Image
           src='/icons/logo-white.svg'

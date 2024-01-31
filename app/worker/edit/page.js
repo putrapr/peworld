@@ -4,8 +4,8 @@ import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
 
-
 const page = () => {
+  
   return (
     <div className='bg-[#F6F7F8] -mb-60'>
       <div className='w-full h-[400px] bg-[#5E50A1]'></div>

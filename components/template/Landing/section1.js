@@ -1,8 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 
 const section1 = ({ className }) => {
+  const router = useRouter()
   return (
     <section className={`grid grid-cols-5 ${className}`}>
       <div id='left-side' className='col-span-2'>
@@ -15,7 +19,9 @@ const section1 = ({ className }) => {
         <p className='text-[#46505C]'>
           Ciptakan mulai dari sini
         </p>
-        <Button className='w-48 h-16 mt-14 text-sm'>Mulai Dari Sekarang</Button>
+        <Button className='w-48 h-16 mt-14 text-sm'
+          onClick={() => router.push('/home')}
+        >Mulai Dari Sekarang</Button>
       </div>
 
       <div id='right-side' className='col-span-3 flex justify-end'>

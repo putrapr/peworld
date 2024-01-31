@@ -4,8 +4,8 @@ import NavAfterLogin from './navAfterLogin';
 function Navbar() {
   return (
     <>
-      {/* <NavBeforeLogin /> */}
-      <NavAfterLogin />
+      <NavBeforeLogin />
+      {/* <NavAfterLogin /> */}
     </>
   )
 }

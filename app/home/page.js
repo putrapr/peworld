@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Image from 'next/image'
@@ -7,80 +8,13 @@ import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
 
-const home = () => {  
-  // const worker = [
-  //   {
-  //     "id": 9,
-  //     "nama": "Abiyan",
-  //     "email": "abiyan@gmail.com",
-  //     "no_telp": "089812340987",
-  //     "sandi": "$2b$10$8c17lqFIlCQDQZgWq9tDpeGBxC6mUz/kDqpJLu..sBXtB3RJmLTpi",
-  //     "jabatan": "Farming Technology",
-  //     "alamat": "Yogyakarta",
-  //     "tempat_kerja": "-",
-  //     "deskripsi": "-",
-  //     "image": "http://res.cloudinary.com/dzpf9unc5/image/upload/v1699944886/q6djyou1eqwovfdqxdy8.jpg",
-  //     "skills": "-"
-  //   },
-  //   {
-  //     "id": 4,
-  //     "nama": "Sekar",
-  //     "email": "sekar@gmail.com",
-  //     "no_telp": "089412345678",
-  //     "sandi": "$2b$10$HRFKQN32W5Y7ld.IfbRfKe62jM.Ru0sQWL10cIXsIfWPax./tGqWi",
-  //     "jabatan": "Sales",
-  //     "alamat": "Tangerang",
-  //     "tempat_kerja": "-",
-  //     "deskripsi": "Mempromosikan produk dengan mengimplementasikan berbagai metode pemasaran.",
-  //     "image": "http://res.cloudinary.com/dzpf9unc5/image/upload/v1699944954/ty05h5oomw7wqteygedz.jpg",
-  //     "skills": "Public Speaking"
-  //   },
-  //   {
-  //     "id": 5,
-  //     "nama": "Adit",
-  //     "email": "adit@gmail.com",
-  //     "no_telp": "089509876543",
-  //     "sandi": "$2b$10$I30/880YLHFf0P.JLqwDvufixdZi7PNVLQ6tTOHLwx/QhjhWhPS6i",
-  //     "jabatan": "Teacher Elementary School",
-  //     "alamat": "Klaten",
-  //     "tempat_kerja": "-",
-  //     "deskripsi": "Mampu mencerdaskan kehidupan bangsa yang berbudi luhur.",
-  //     "image": "http://res.cloudinary.com/dzpf9unc5/image/upload/v1699945014/uu4rccvhsdxfrws58n6a.jpg",
-  //     "skills": "-"
-  //   },
-  //   {
-  //     "id": 7,
-  //     "nama": "Imron",
-  //     "email": "imron@gmail.com",
-  //     "no_telp": "089012340987",
-  //     "sandi": "$2b$10$IlbNTrKohI0x/KnYQlFnruK70/YZBAwapR/ROtqJUmN6v0cpscFsK",
-  //     "jabatan": "DevOps Developer",
-  //     "alamat": "Bandung",
-  //     "tempat_kerja": "-",
-  //     "deskripsi": "-",
-  //     "image": "http://res.cloudinary.com/dzpf9unc5/image/upload/v1699945045/ugc7ppzpcw1etabhxoxg.jpg",
-  //     "skills": "CI/CD, Docker"
-  //   }
-  // ]
-
-  // "id": "90b7b241-c816-4736-94bf-e58917a76fec",
-  // "user_id": "f5d81120-21b1-4762-a53f-eddde4f9043f",
-  // "phone": "08123123123",
-  // "job_desk": null,
-  // "domicile": null,
-  // "workplace": null,
-  // "description": null,
-  // "created_at": "2024-01-31T08:12:36.054Z",
-  // "updated_at": null,
-  // "name": "beni akbar",
-  // "photo": null
-
+const home = () => {
+  const router = useRouter()
   const [worker, setWorker] = useState([])
   const env = process.env.NEXT_PUBLIC_URL_BE
   const getWorker = async () => {
     const result = await axios.get(`${env}/workers`)
     setWorker(result.data.data)
-    // console.log(result.data.data)
   }
 
   useEffect(()=> {

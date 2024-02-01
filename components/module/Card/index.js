@@ -1,9 +1,12 @@
-import React from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import Skill from '@/components/base/Skill'
+// import Skill from '@/components/base/Skill'
 import Button from '@/components/base/Button'
 
 const index = ({ data }) => {
+  const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
   // const arrSkill = [];
   // if (skills != '-') {                
@@ -46,7 +49,7 @@ const index = ({ data }) => {
           </div>
         </div>
         <div className='flex items-center'>
-          <Button className='w-36 h-12 mr-20 font-normal text-sm'>Lihat Profile</Button>
+          <Button onClick={() => router.push('/worker')} className='w-36 h-12 mr-20 font-normal text-sm'>Lihat Profile</Button>
         </div>
       </div>
       <hr />

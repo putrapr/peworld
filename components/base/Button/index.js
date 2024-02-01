@@ -4,7 +4,8 @@ const index = ({ bgColor = 'purple', className,  children, ...props }) => {
   else if (bgColor == 'yellow') bgColor = 'bg-[#FBB017] hover:bg-[#EAA61B]'
 
   return (
-    <button {...props} className={`rounded text-white font-semibold tracking-wider active:ring-2 ${bgColor} ${className} `}>{children}</button>
+    <button {...props} className={`rounded text-white font-semibold tracking-wider active:ring-2 ${bgColor} ${className}`}
+    >{children}</button>    
   )
 }
 

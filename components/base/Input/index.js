@@ -1,6 +1,6 @@
 import React from 'react'
 
-// placeholder
+{/* <Input label='Nama Lengkap' placeholder='Masukan nama lengkap'/> */}
 const index = ({ className, label, ...props }) => {
   return (
     <div className={'mb-6 '+className}>

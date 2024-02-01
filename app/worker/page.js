@@ -1,15 +1,18 @@
-import React from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 
 const page = () => {
+  const router = useRouter()
   return (
     <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>
       <main className=' rounded-lg border bg-white'>        
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
-          <button type="button" className='text-white text-xl mb-4 mr-6'>
+          <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
             <Image
               src='/icons/pencil.svg'
               alt='pencil'
@@ -22,7 +25,7 @@ const page = () => {
         
         {/* Content */}
         <div className='mx-[4.5rem] -mt-20'>
-          <Link href=''>
+          <Link href='/worker/edit'>
             <Image 
               // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
               src= "/img/default.png"
@@ -47,7 +50,7 @@ const page = () => {
           <p className='w-[700px] text-[#9EA0A5] text-sm my-6'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
           </p>
-          <Button className='w-72 h-12 text-sm'>Hire</Button>
+          {/* <Button className='w-72 h-12 text-sm'>Hire</Button> */}
 
           <h4 className='font-bold text-xl mt-10'>Skill</h4>
           <div className='flex flex-wrap w-80 mt-3 text-xs'>

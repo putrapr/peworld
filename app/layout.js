@@ -1,8 +1,5 @@
-
 import "./globals.css"
-import Navbar from '@/components/module/Navbar'
-import Footer from '@/components/module/Footer'
-import { usePathname } from 'next/navigation'
+import BaseLayout from './base-layout'
 
 export const metadata = {
   title: "Peworld",
@@ -10,15 +7,11 @@ export const metadata = {
 };
 
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }) {  
   return (
     <html lang="en">      
       <body>
-        <div className='2xl:container 2xl:mx-auto'>
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <BaseLayout>{children}</BaseLayout>
       </body>
     </html>
   );

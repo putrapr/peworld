@@ -27,8 +27,8 @@ const page = () => {
                 />
                 <button type="button" className='text-[#9EA0A5] text-xl mb-4 flex gap-2 items-center'>
                   <Image 
-                    src='\icons\pencil.svg'
-                    alt='pencil'
+                    src='\icons\pencil-gray.svg'
+                    alt='pencil-gray'
                     width={15}
                     height={15}
                   />

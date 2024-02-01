@@ -14,8 +14,8 @@ const page = () => {
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
           <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
             <Image
-              src='/icons/pencil.svg'
-              alt='pencil'
+              src='/icons/pencil-white.svg'
+              alt='pencil-white'
               width={15}
               height={15}
             />

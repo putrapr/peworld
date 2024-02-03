@@ -1,14 +1,79 @@
-import React from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()    
+    const pass = e.target.password.value
+    const pass2 = e.target.password2.value
+    if (pass != pass2)
+      return Swal.fire({
+        icon: "error",
+        title: "Daftar Gagal",
+        text: "Konfirmasi sandi salah",
+      })
+
+    const env = process.env.NEXT_PUBLIC_URL_BE
+    const data = {
+      email: e.target.email.value,
+      password: pass,
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+    }
+
+    axios.post(`${env}/workers/register`, data)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Daftar Sukses",
+          text: "Akun berhasil dibuat, silahkan masuk",
+        })
+        router.push('/login/worker')
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Daftar Gagal",
+          text: "Gagal daftar akun",
+        })
+        router.push('/register/worker')
+      })
+
+    // fetch(`${env}/workers/register`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(data) }
+    // ).then ( async (res) => {
+    //   if(!res.ok){
+    //    const result =  await res.json()
+    //     throw result.message
+    //   }
+    //   return res.json()
+    // }).catch ( (err) => {
+    //   return Swal.fire({
+    //     icon: "error",
+    //     title: "Login Error",
+    //     text: err.message,
+    //   })
+    // })   
+  }
+
   return (
-    <div className='flex py-6 px-12 gap-16'>
+    <div className='flex py-6 max-sm:px-6 px-12 gap-16'>
       {/* Left Side */}
-      <div className='relative w-1/2'>
+      <div className='max-sm:hidden relative w-1/2'>
         <Image 
           src="/img/login/poster.webp" 
           alt="poster" 
@@ -20,16 +85,16 @@ const page = () => {
       </div>
 
       {/* Right Side */}
-      <div className='w-2/5 mb-10'>
-        <form>
+      <div className='max-sm:w-full w-2/5 mb-10'>
+        <form onSubmit={handleSubmit}>
           <h2 className='text-3xl font-bold mt-16'>Halo, Pewpeople</h2>
           <p className='text-lg mt-4 mb-12'>Isi data di bawah ini untuk registrasi akun mu</p>
-          <Input label='Nama' placeholder='Masukan nama panjang'/>
-          <Input label='Email' placeholder='Masukan alamat email'/>
-          <Input label='No Handphone' placeholder='Masukan no handphone'/>
-          <Input label='Kata Sandi' placeholder='Masukan kata sandi'/>
-          <Input label='Konfirmasi Kata Sandi' placeholder='Masukan konfirmasi kata sandi'/>
-          <Button bgColor='yellow' className='w-full h-12 my-6'>Daftar</Button>
+          <Input name='name' type='text' label='Nama' placeholder='Masukan nama panjang' required/>
+          <Input name='email' type='email' label='Email' placeholder='Masukan alamat email' required/>
+          <Input name='phone' type='text' onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()} label='No Handphone' placeholder='Masukan no handphone' required/>
+          <Input name='password' type='password' label='Kata Sandi' placeholder='Masukan kata sandi' required/>
+          <Input name='password2' type='password' label='Konfirmasi Kata Sandi' placeholder='Masukan konfirmasi kata sandi' required/>
+          <Button type='submit' bgColor='yellow' className='w-full h-12 my-6'>Daftar</Button>
           <div className='text-center'>
             <p>Anda sudah punya akun? <Link href="/login/worker" className='text-[#FBB017]'>Masuk Sini</Link></p>
           </div>

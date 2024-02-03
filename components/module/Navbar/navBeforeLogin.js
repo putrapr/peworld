@@ -12,7 +12,7 @@ const navBeforeLogin = () => {
   const [register, setRegister] = useState(false)
   const router = useRouter()
   return (
-    <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 px-[6.5rem] drop-shadow-md'>
+    <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 max-sm:px-4 px-[6.5rem] drop-shadow-md'>
       <Link href="/home">
         <Image
           src="/icons/logo-purple.svg"

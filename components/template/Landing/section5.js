@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import ButtonOutline from '@/components/base/ButtonOutline'
 
-const section5 = ({ className }) => {
+const Section5 = ({ className }) => {
   const router = useRouter()
   return (
     <section className={`w-full text-white flex justify-center items-center ${className}`}>
@@ -22,4 +21,4 @@ const section5 = ({ className }) => {
   )
 }
 
-export default section5
+export default Section5

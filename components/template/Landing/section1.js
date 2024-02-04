@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 
-const section1 = ({ className }) => {
+const Section1 = ({ className }) => {
   const router = useRouter()
   return (
     <section className={`grid grid-cols-5 ${className}`}>
@@ -36,4 +35,4 @@ const section1 = ({ className }) => {
   )
 }
 
-export default section1
+export default Section1

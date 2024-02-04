@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
@@ -8,7 +7,7 @@ import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
 
-const home = () => {
+const Home = () => {
   const router = useRouter()
   const [worker, setWorker] = useState([])
   const env = process.env.NEXT_PUBLIC_URL_BE
@@ -27,7 +26,7 @@ const home = () => {
         <h2 className='text-white font-bold max-sm:text-xl text-3xl'>Top Jobs</h2>
       </div>
       
-      <div className='w-full max-sm:px-4 px-[8.5rem]'>
+      <div className='w-full max-sm:px-4 px-[8.5rem] '>
         <div className='bg-white w-full h-16 mt-14 shadow-ring rounded-lg'>
           <div className='flex'>
             <div className="grid grid-cols-12 w-4/5">
@@ -87,4 +86,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home

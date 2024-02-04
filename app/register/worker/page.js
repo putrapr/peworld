@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,7 +7,7 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
 
   const handleSubmit = async (e) => {
@@ -104,4 +103,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

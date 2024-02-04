@@ -1,10 +1,55 @@
-import React from 'react'
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()    
+    const pass = e.target.password.value
+    const pass2 = e.target.password2.value
+    if (pass != pass2)
+      return Swal.fire({
+        icon: "error",
+        title: "Daftar Gagal",
+        text: "Konfirmasi sandi salah",
+      })
+
+    const env = process.env.NEXT_PUBLIC_URL_BE
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      company: e.target.company.value,
+      position: e.target.position.value,
+      phone: e.target.phone.value,
+      password: pass
+    }
+
+    axios.post(`${env}/recruiters/register`, data)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Daftar Sukses",
+          text: "Akun berhasil dibuat, silahkan masuk",
+        })
+        router.push('/login/recruiter')
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Daftar Gagal",
+          text: "Gagal daftar akun",
+        })
+        router.push('/register/recruiter')
+      })
+  }
+
   return (
     <div className='flex py-6 px-12 gap-16'>
       {/* Left Side */}
@@ -21,17 +66,17 @@ const page = () => {
 
       {/* Right Side */}
       <div className='w-2/5 mb-10'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2 className='text-3xl font-bold mt-16'>Halo, Pewpeople</h2>
           <p className='text-lg mt-4 mb-12'>Isi data di bawah ini untuk registrasi akun mu</p>
-          <Input label='Nama' placeholder='Masukan nama panjang'/>
-          <Input label='Email' placeholder='Masukan alamat email'/>
-          <Input label='Perusahaan' placeholder='Masukan nama perusahaan'/>
-          <Input label='Jabatan' placeholder='Posisi di perusahaan anda'/>
-          <Input label='No handphone' placeholder='Masukan no handphone'/>
-          <Input label='Kata sandi' placeholder='Masukan kata sandi'/>
-          <Input label='Konfirmasi kata sandi' placeholder='Masukan konfirmasi kata sandi'/>
-          <Button bgColor='yellow' className='w-full h-12 my-6'>Daftar</Button>
+          <Input name='name' type='text' label='Nama' placeholder='Masukan nama panjang'/>
+          <Input name='email' type='email' label='Email' placeholder='Masukan alamat email'/>
+          <Input name='company' type='text' label='Perusahaan' placeholder='Masukan nama perusahaan'/>
+          <Input name='position' type='text' label='Jabatan' placeholder='Posisi di perusahaan anda'/>
+          <Input name='phone' type='text' onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()} label='No handphone' placeholder='Masukan no handphone'/>
+          <Input name='password' type='password' label='Kata sandi' placeholder='Masukan kata sandi'/>
+          <Input name='password2' type='password' label='Konfirmasi kata sandi' placeholder='Masukan konfirmasi kata sandi'/>
+          <Button type='submit' bgColor='yellow' className='w-full h-12 my-6'>Daftar</Button>
           <div className='text-center'>
             <p>Anda sudah punya akun? <Link href="/login/worker" className='text-[#FBB017]'>Masuk Sini</Link></p>
           </div>
@@ -41,4 +86,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

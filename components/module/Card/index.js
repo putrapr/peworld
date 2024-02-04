@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -6,7 +5,7 @@ import Image from 'next/image'
 import Button from '@/components/base/Button'
 import Link from 'next/link'
 
-const index = ({ data }) => {
+const Index = ({ data }) => {
   const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
   // const arrSkill = [];
@@ -20,7 +19,7 @@ const index = ({ data }) => {
   // }
 
   return (
-    <div key={id}>
+    <div>
       <div className='flex justify-between'>
         {/* <Link href='/worker' className='flex'> */}
           <div className='flex justify-between max-sm:p-4 p-6'>
@@ -60,4 +59,4 @@ const index = ({ data }) => {
   )
 }
 
-export default index
+export default Index

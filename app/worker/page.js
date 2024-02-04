@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -6,7 +5,7 @@ import Link from 'next/link'
 import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   return (
     <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>
@@ -135,4 +134,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

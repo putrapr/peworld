@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,7 +7,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -19,15 +18,19 @@ const page = () => {
     }    
     axios.post(`${env}/auth/login`, data)
       .then((res) => {
-        localStorage.setItem("token", res.data.data.token)
-        Swal.fire({
-          icon: "success",
-          title: "Masuk Sukses",
-        })        
-        router.push('/')
+        const result = res.data.data
+        if (result.role === 'recruiter') {
+          localStorage.setItem("token", result.token)
+          Swal.fire({
+            icon: "success",
+            title: "Masuk Sukses",
+          })        
+          router.push('/')
+        } else {
+          throw 'Not a recruiter account'
+        }
       })
       .catch((err) => {
-        console.log(err.message)
         Swal.fire({
           icon: "error",
           title: "Masuk Gagal",
@@ -35,6 +38,7 @@ const page = () => {
         })
       })
   }
+  
   return (
     <div className='flex w-screen h-screen py-6 px-12 gap-16'>
       {/* Left Side */}
@@ -59,7 +63,7 @@ const page = () => {
           </div>
           <Button type='submit' bgColor='yellow' className='w-full h-12 my-6'>Masuk</Button>
           <div className='text-center'>
-            <p>Anda belum punya akun? <Link href="/register" className='text-[#FBB017]'>Daftar Sini</Link></p>
+            <p>Anda belum punya akun? <Link href="/register/recruiter" className='text-[#FBB017]'>Daftar Sini</Link></p>
           </div>
         </form>        
       </div>
@@ -67,4 +71,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

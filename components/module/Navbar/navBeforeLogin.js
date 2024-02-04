@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -7,7 +6,7 @@ import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Button from '@/components/base/Button'
 
-const navBeforeLogin = () => {
+const NavBeforeLogin = () => {
   const [login, setLogin] = useState(false)
   const [register, setRegister] = useState(false)
   const router = useRouter()
@@ -59,4 +58,4 @@ const navBeforeLogin = () => {
   )
 }
 
-export default navBeforeLogin
+export default NavBeforeLogin

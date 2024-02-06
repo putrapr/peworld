@@ -1,11 +1,32 @@
-import React from 'react'
+'use client'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
+import api from '@/config/api'
 
-const page = () => {
-  
+const Page = () => {
+  const router = useRouter()
+  const [newData, setNewData] = useState({})
+  const [worker, setWorker] = useState([])
+  const getWorker = async () => {
+    const result = await api.get('/workers/profile')
+    setWorker(result.data.data)
+    setNewData(result.data.data)
+  }
+
+  const updateProfile = async () => {
+    await api.put('/workers/profile', newData)
+
+  }
+
+  // value={form.email} onChange={(e) => setForm({...form, email: e.target.value})}
+  useEffect(()=> {
+    getWorker()
+  })
+
   return (
     <div className='bg-[#F6F7F8] -mb-60'>
       <div className='w-full h-[400px] bg-[#5E50A1]'></div>
@@ -36,8 +57,8 @@ const page = () => {
                 </button>
               </div>
               <div>
-                <h4 className='text-xl mt-4 font-bold'>Louis Tomlinson</h4>
-                <p className='text-sm mt-2'>Web developer</p>
+                <h4 className='text-xl mt-4 font-bold'>{worker.name}</h4>
+                <p className='text-sm mt-2'>{worker.job_desk}</p>
                 <div className='text-sm text-[#9EA0A5] mt-3 flex gap-2'>
                   <Image
                     src='/icons/locate.svg'
@@ -45,18 +66,15 @@ const page = () => {
                     width={15}
                     height={15}
                   />
-                  <p>Purwokerto, Jawa Tengah</p>
+                  <p>{worker.domicile}</p>
                 </div>
-                <p className='text-sm text-[#9EA0A5] mt-3'>Freelancer</p>
+                <p className='text-sm text-[#9EA0A5] mt-3'>{worker.workplace}</p>
               </div>
             </div>
             {/* Button */}
             <div className='mt-5'>
               <Button className='w-full h-12 text-sm'>Simpan</Button>
               <ButtonOutline className='w-full h-10 mt-4 text-sm'>Batal</ButtonOutline>
-
-              {/* <button className={'btn '+ s.btn_simpan }>Simpan</button>
-              <button className={'btn '+ s.btn_batal }>Batal</button>               */}
             </div>
           </div>
 
@@ -68,14 +86,14 @@ const page = () => {
               <h4 className='text-xl pl-8 pt-8'>Data diri</h4>
               <hr className='mt-4 bg-[#C4C4C4]' />
               <div className='p-8'>
-                <Input label='Nama Lengkap' placeholder='Masukan nama lengkap'/>
-                <Input label='Job desk' placeholder='Masukan job desk'/>
-                <Input label='Domisili' placeholder='Masukan domisili'/>
-                <Input label='Tempat kerja' placeholder='Masukan tempat kerja'/>
+                <Input defaultValue={worker.name} label='Nama Lengkap' placeholder='Masukan nama lengkap'/>
+                <Input defaultValue={worker.job_desk} label='Job desk' placeholder='Masukan job desk'/>
+                <Input defaultValue={worker.domicile} label='Domisili' placeholder='Masukan domisili'/>
+                <Input defaultValue={worker.workplace} label='Tempat kerja' placeholder='Masukan tempat kerja'/>
                 
                 <div className="mb-3 flex flex-col">
                   <label for="deskripsi-diri" className='text-xs text-[#9EA0A5] ms-2'>Deskripsi singkat</label>
-                  <textarea className="text-sm border p-3 mt-1 rounded" id="deskripsi-diri" rows="6" placeholder='Tuliskan deskripsi singkat'></textarea>
+                  <textarea defaultValue={worker.description} className="text-sm border p-3 mt-1 rounded" id="deskripsi-diri" rows="6" placeholder='Tuliskan deskripsi singkat'></textarea>
                 </div>
               </div>              
             </div>
@@ -156,4 +174,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

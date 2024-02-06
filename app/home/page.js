@@ -1,24 +1,23 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/config/api'
 import Image from 'next/image'
 import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
 
 const Home = () => {
-  const router = useRouter()
-  const [worker, setWorker] = useState([])
-  const env = process.env.NEXT_PUBLIC_URL_BE
-  const getWorker = async () => {
-    const result = await axios.get(`${env}/workers`)
-    setWorker(result.data.data)
-  }
+  // const router = useRouter()
+  // const [worker, setWorker] = useState([])
+  // const getWorker = async () => {
+  //   const result = await api.get('/workers')
+  //   setWorker(result.data.data)
+  // }
 
-  useEffect(()=> {
-    getWorker()
-  })
+  // useEffect(()=> {
+  //   getWorker()
+  // })
 
   return (
     <main className='w-full bg-[#F6F7F8]'>
@@ -53,11 +52,11 @@ const Home = () => {
         </div>
 
         <div className='bg-white w-full mt-16 shadow-ring rounded-lg'>
-          {
+          {/* {
             worker.map((item, index) => (              
               <Card data={item} key={index}/>
             ))
-          }
+          } */}
         </div>
 
         <div className='w-full flex justify-center gap-4 my-14'>

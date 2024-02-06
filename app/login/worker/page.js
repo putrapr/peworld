@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import Input from '@/components/base/Input'
-import axios from 'axios'
+import api from '@/config/api'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
@@ -16,7 +16,7 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value
     }    
-    axios.post(`${env}/auth/login`, data)
+    api.post('/auth/login', data)
     .then((res) => {
       const result = res.data.data
       if (result.role === 'worker') {

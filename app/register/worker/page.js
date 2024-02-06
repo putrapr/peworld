@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
 import Swal from 'sweetalert2'
-import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import api from '@/config/api'
 
 const Page = () => {
   const router = useRouter()
@@ -20,8 +20,7 @@ const Page = () => {
         title: "Daftar Gagal",
         text: "Konfirmasi sandi salah",
       })
-
-    const env = process.env.NEXT_PUBLIC_URL_BE
+      
     const data = {
       email: e.target.email.value,
       password: pass,
@@ -29,7 +28,7 @@ const Page = () => {
       phone: e.target.phone.value,
     }
 
-    axios.post(`${env}/workers/register`, data)
+    api.post('/workers/register', data)
       .then((res) => {
         Swal.fire({
           icon: "success",
@@ -39,10 +38,12 @@ const Page = () => {
         router.push('/login/worker')
       })
       .catch((err) => {
+        const text = (err.response.data.message == 'user sudah terdaftar') ? 
+          'Akun sudah terdaftar, silahkan masuk' : 'Gagal daftar akun'
         Swal.fire({
           icon: "error",
           title: "Daftar Gagal",
-          text: "Gagal daftar akun",
+          text
         })
         router.push('/register/worker')
       })

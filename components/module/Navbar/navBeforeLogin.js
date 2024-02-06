@@ -3,8 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import ButtonOutline from '@/components/base/ButtonOutline'
-import Button from '@/components/base/Button'
+
 
 const NavBeforeLogin = () => {
   const [login, setLogin] = useState(false)

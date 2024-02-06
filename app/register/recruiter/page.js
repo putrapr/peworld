@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
-import axios from 'axios'
+import api from '@/config/api'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
@@ -21,7 +21,6 @@ const Page = () => {
         text: "Konfirmasi sandi salah",
       })
 
-    const env = process.env.NEXT_PUBLIC_URL_BE
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -31,7 +30,7 @@ const Page = () => {
       password: pass
     }
 
-    axios.post(`${env}/recruiters/register`, data)
+    api.post('/recruiters/register', data)
       .then((res) => {
         Swal.fire({
           icon: "success",
@@ -41,10 +40,12 @@ const Page = () => {
         router.push('/login/recruiter')
       })
       .catch((err) => {
+        const text = (err.response.data.message == 'user sudah terdaftar') ? 
+          'Akun sudah terdaftar, silahkan masuk' : 'Gagal daftar akun'
         Swal.fire({
           icon: "error",
           title: "Daftar Gagal",
-          text: "Gagal daftar akun",
+          text
         })
         router.push('/register/recruiter')
       })

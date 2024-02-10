@@ -1,5 +1,5 @@
 import api from '@/config/api'
-// import axios from 'axios'
+import axios from 'axios'
 // import {cookies} from 'next/headers'
 
 // const url = process.env.NEXT_PUBLIC_URL_BE
@@ -30,15 +30,15 @@ export const getWorkers = async ()=>{
     const result = await api.get('v1/workers')
     return result.data.data
   } catch (err) {
-    return Promise.reject(err.message)
+    return Promise.reject('pesan error: '+err.message)
   }  
 }
 
-export const getWorker = async (id) => {
+export const getWorker = async (id) => {  
   try {
     const result = await api.get('v1/workers/'+id)
     return result.data.data
   } catch (err) {
-    return Promise.reject(err.message)
+    return Promise.reject('pesan error: '+err.message)
   }
 }

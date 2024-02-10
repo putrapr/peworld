@@ -7,7 +7,7 @@ import { getWorkers } from '@/service/worker'
 const Home = async () => {
   const worker = await getWorkers()
   return (
-    <main className='w-full bg-[#F6F7F8]'>
+    <main className='w-full bg-[#F6F7F8] pb-14'>
       <div className='flex items-center w-full h-20 bg-[#5E50A1] max-sm:px-4 px-[8.5rem]'>
         <h2 className='text-white font-bold max-sm:text-xl text-3xl'>Top Jobs</h2>
       </div>
@@ -46,7 +46,7 @@ const Home = async () => {
           }
         </div>
 
-        <div className='w-full flex justify-center gap-4 my-14'>
+        <div className='w-full flex justify-center gap-4 mt-14'>
           <ButtonPage>
             <Image
               src='/icons/arrow-left.svg'

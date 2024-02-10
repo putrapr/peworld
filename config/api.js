@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {cookies} from 'next/headers'
 
-// const url = process.env.NEXT_PUBLIC_URL_BE
 const getCookie = async (name) => {
   return cookies().get(name)?.value ?? '';
 }

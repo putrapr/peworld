@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import Input from '@/components/base/Input'
-import api from '@/config/api'
+// import api from '@/config/api'
+import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
@@ -16,27 +17,28 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value
     }    
-    api.post('/v1/auth/login', data)
-    .then((res) => {
-      const result = res.data.data
-      if (result.role === 'worker') {
-        localStorage.setItem("token", result.token)
-        Swal.fire({
-          icon: "success",
-          title: "Masuk Sukses",
-        })        
-        router.push('/')
-      } else {
-        throw 'Not a recruiter account'
-      }
-    })
-    .catch((err) => {
-      Swal.fire({
-        icon: "error",
-        // title: "Masuk Gagal",
-        text: "Email atau sandi salah",
+    // api.post('/v1/auth/login', data)
+    axios.post(env+'/v1/auth/login', data)
+      .then((res) => {
+        const result = res.data.data
+        if (result.role === 'worker') {
+          localStorage.setItem("token", result.token)
+          Swal.fire({
+            icon: "success",
+            title: "Masuk Sukses",
+          })        
+          router.push('/')
+        } else {
+          throw 'Not a recruiter account'
+        }
       })
-    })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          // title: "Masuk Gagal",
+          text: "Email atau sandi salah",
+        })
+      })
   }
   
   return (

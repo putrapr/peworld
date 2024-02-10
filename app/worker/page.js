@@ -5,8 +5,10 @@ import Skill from '@/components/base/Skill'
 import { getWorker } from '@/service/worker'
 
 const Page = async () => {
-  const worker = await getWorker(id)
-  
+  const id = '0752990f-b91c-4b9f-afb6-b4e8e5442481'
+  const id2 = '6d1ff22e-76b6-4260-92da-073a6e6119dc'
+  const { photo, name, job_desk, domicile, description } = await getWorker(id)
+
   return (
     <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>
       <main className=' rounded-lg border bg-white'>        
@@ -34,8 +36,8 @@ const Page = async () => {
               className="max-sm:w-32 max-sm:h-32 rounded-circle"
             />
           </Link>
-          <h4 className='mt-6 text-2xl'>{worker.name}</h4>
-          <p className='mb-2 text-sm'>{worker.job_desk}</p>
+          <h4 className='mt-6 text-2xl'>{name}</h4>
+          <p className='mb-2 text-sm'>{job_desk}</p>
           <p className='mb-2 text-[#9EA0A5] flex gap-2'>
             <Image
               src='\icons\locate.svg'
@@ -43,11 +45,11 @@ const Page = async () => {
               width={15}
               height={15}
             />
-            <p className='text-sm'>{worker.domicile}</p> 
+            <p className='text-sm'>{domicile}</p> 
           </p>
-          <p className='mb-2 text-[#9EA0A5] text-sm'>{worker.workplace}</p>
+          <p className='mb-2 text-[#9EA0A5] text-sm'>Freelancer</p>
           <p className='max-sm:w-full max-sm:text-justify w-[700px] text-[#9EA0A5] text-sm my-6'>
-            {worker.description}
+            {description}
           </p>
           {/* <Button className='w-72 h-12 text-sm'>Hire</Button> */}
 

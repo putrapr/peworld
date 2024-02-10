@@ -1,5 +1,5 @@
 import api from '@/config/api'
-import axios from 'axios'
+// import axios from 'axios'
 // import {cookies} from 'next/headers'
 
 // const url = process.env.NEXT_PUBLIC_URL_BE
@@ -40,5 +40,14 @@ export const getWorker = async (id) => {
     return result.data.data
   } catch (err) {
     return Promise.reject('pesan error: '+err.message)
+  }
+}
+
+export const register = async (data) => {
+  try {
+    api.post('/workers/register', data)
+    return 'Done'
+  } catch(err) {
+    return Promise.reject(err.message)
   }
 }

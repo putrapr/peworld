@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import Input from '@/components/base/Input'
-import api from '@/config/api'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 const Page = () => {
   const router = useRouter()
@@ -14,8 +14,9 @@ const Page = () => {
     const data = {
       email: e.target.email.value,
       password: e.target.password.value
-    }    
-    api.post('/auth/login', data)
+    }
+    const env = process.env.NEXT_PUBLIC_URL_BE
+    axios.post(env+'/v1/auth/login', data)
       .then((res) => {
         const result = res.data.data
         if (result.role === 'recruiter') {

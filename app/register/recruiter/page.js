@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
-import api from '@/config/api'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 const Page = () => {
   const router = useRouter()
@@ -30,7 +30,8 @@ const Page = () => {
       password: pass
     }
 
-    api.post('/recruiters/register', data)
+    const env = process.env.NEXT_PUBLIC_URL_BE
+    axios.post(env+'/v1/recruiters/register', data)
       .then((res) => {
         Swal.fire({
           icon: "success",

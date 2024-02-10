@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import Input from '@/components/base/Input'
-// import api from '@/config/api'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
@@ -11,13 +10,12 @@ import { useRouter } from 'next/navigation'
 const Page = () => {
   const router = useRouter()
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const env = process.env.NEXT_PUBLIC_URL_BE
+    e.preventDefault()    
     const data = {
       email: e.target.email.value,
       password: e.target.password.value
-    }    
-    // api.post('/v1/auth/login', data)
+    }
+    const env = process.env.NEXT_PUBLIC_URL_BE
     axios.post(env+'/v1/auth/login', data)
       .then((res) => {
         const result = res.data.data

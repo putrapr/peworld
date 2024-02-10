@@ -1,22 +1,29 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+// import { useRouter } from 'next/navigation'
+// import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
-import api from '@/config/api'
+// import api from '@/config/api'
 
 const Page = () => {  
-  const router = useRouter()
-  const [worker, setWorker] = useState([])
-  const getWorker = async () => {
-    const result = await api.get('/workers/profile')
-    setWorker(result.data.data)
+  // const router = useRouter()
+  // const [worker, setWorker] = useState([])
+  // const getWorker = async () => {
+  //   const result = await api.get('/workers/profile')
+  //   setWorker(result.data.data)
+  // }
+  // useEffect(()=> {
+  //   getWorker()
+  // })
+
+  const worker = {
+    name: 'a',
+    job_desk: 'b',
+    workplace: 'c',
+    description: 'd'
   }
-  useEffect(()=> {
-    getWorker()
-  })
 
   return (
     <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>

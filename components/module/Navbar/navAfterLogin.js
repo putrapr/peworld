@@ -4,6 +4,7 @@ import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Button from '@/components/base/Button'
 import { jwtDecode } from "jwt-decode";
+// import { cookies } from 'next/headers';
 
 const NavAfterLogin = () => {
   const router = useRouter()
@@ -12,6 +13,7 @@ const NavAfterLogin = () => {
     const token = localStorage.getItem('token')
     const decoded = jwtDecode(token)
     localStorage.clear()
+    // cookies().delete('token')
     router.push(`/login/${decoded.role}`)
   }
 

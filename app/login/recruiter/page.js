@@ -15,7 +15,7 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value
     }    
-    api.post('/auth/login', data, {withCredentials: true})
+    api.post('/auth/login', data)
       .then((res) => {
         const result = res.data.data
         if (result.role === 'recruiter') {

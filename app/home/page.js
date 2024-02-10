@@ -1,24 +1,11 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
-import api from '@/config/api'
 import Image from 'next/image'
 import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
+import { getWorkers } from '@/service/worker'
 
-const Home = () => {
-  // const router = useRouter()
-  // const [worker, setWorker] = useState([])
-  // const getWorker = async () => {
-  //   const result = await api.get('/workers')
-  //   setWorker(result.data.data)
-  // }
-
-  // useEffect(()=> {
-  //   getWorker()
-  // })
-
+const Home = async () => {
+  const worker = await getWorkers()
   return (
     <main className='w-full bg-[#F6F7F8]'>
       <div className='flex items-center w-full h-20 bg-[#5E50A1] max-sm:px-4 px-[8.5rem]'>
@@ -52,11 +39,11 @@ const Home = () => {
         </div>
 
         <div className='bg-white w-full mt-16 shadow-ring rounded-lg'>
-          {/* {
+          {
             worker.map((item, index) => (              
               <Card data={item} key={index}/>
             ))
-          } */}
+          }
         </div>
 
         <div className='w-full flex justify-center gap-4 my-14'>

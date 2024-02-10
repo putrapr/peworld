@@ -1,13 +1,13 @@
-'use client'
+// 'use client'
 // import { useRouter } from 'next/navigation'
 // import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from '@/components/base/Button'
+// import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 // import api from '@/config/api'
 
-const Page = () => {  
+const Page = ({params}) => {  
   // const router = useRouter()
   // const [worker, setWorker] = useState([])
   // const getWorker = async () => {
@@ -19,7 +19,7 @@ const Page = () => {
   // })
 
   return (
-    <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>
+    <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>
       <main className=' rounded-lg border bg-white'>        
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
           <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
@@ -34,17 +34,18 @@ const Page = () => {
         </div>
         
         {/* Content */}
-        <div className='mx-[4.5rem] -mt-20'>
+        <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
           <Link href='/worker/edit'>
             <Image 
               // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
               src= "/img/default.png"
               alt="dp" 
               width={150} 
-              height={150} 
-              className="rounded-circle"
+              height={150}
+              className="max-sm:w-32 max-sm:h-32 rounded-circle"
             />
           </Link>
+          <p>{params.id}</p>
           <h4 className='mt-6 text-2xl'>Louis Tomlinson</h4>
           <p className='mb-2 text-sm'>Web developer</p>
           <p className='mb-2 text-[#9EA0A5] flex gap-2'>
@@ -57,7 +58,7 @@ const Page = () => {
             <p className='text-sm'>Purwokerto</p> 
           </p>
           <p className='mb-2 text-[#9EA0A5] text-sm'>Freelancer</p>
-          <p className='w-[700px] text-[#9EA0A5] text-sm my-6'>
+          <p className='max-sm:w-full max-sm:text-justify w-[700px] text-[#9EA0A5] text-sm my-6'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
           </p>
           {/* <Button className='w-72 h-12 text-sm'>Hire</Button> */}

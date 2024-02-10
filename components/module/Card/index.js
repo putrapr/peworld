@@ -50,7 +50,7 @@ const Index = ({ data }) => {
             </div>
           </div>
           <div className='max-sm:hidden flex items-center'>
-            <Button onClick={() => router.push('/worker')} className='w-36 h-12 max-sm:mr-0 mr-20 font-normal text-sm'>Lihat Profile</Button>
+            <Button onClick={() => router.push('/worker/'+id)} className='w-36 h-12 max-sm:mr-0 mr-20 font-normal text-sm'>Lihat Profile</Button>
           </div>
         {/* </Link> */}
       </div>

@@ -16,7 +16,7 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value
     }    
-    api.post('/auth/login', data)
+    api.post('/v1/auth/login', data)
     .then((res) => {
       const result = res.data.data
       if (result.role === 'worker') {
@@ -33,7 +33,7 @@ const Page = () => {
     .catch((err) => {
       Swal.fire({
         icon: "error",
-        title: "Masuk Gagal",
+        // title: "Masuk Gagal",
         text: "Email atau sandi salah",
       })
     })

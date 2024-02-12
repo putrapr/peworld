@@ -1,39 +1,40 @@
+'use client'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
-import { getWorker } from '@/service/worker'
+import axios from 'axios'
 
-const Page = async () => {
-  const worker = await getWorker(id)
+const Page = ({params: {id}}) => {
+  const [worker, setWorker] = useState({})
+
+  const getWorker = async () => {
+    const env = process.env.NEXT_PUBLIC_URL_BE
+    const result = await axios.get(env+'/v1/workers/'+id)
+    setWorker(result.data.data)
+  }
+
+  useEffect(() => {
+    getWorker()
+  },[])
   
   return (
     <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>
       <main className=' rounded-lg border bg-white'>        
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
-          <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
-            <Image
-              src='/icons/pencil-white.svg'
-              alt='pencil-white'
-              width={15}
-              height={15}
-            />
-            <p>Ubah Latar</p>
-          </button>        
         </div>
         
         {/* Content */}
         <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
-          <Link href='/worker/edit'>
-            <Image 
-              // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
-              src= "/img/default.png"
-              alt="dp" 
-              width={150} 
-              height={150}
-              className="max-sm:w-32 max-sm:h-32 rounded-circle"
-            />
-          </Link>
+          <Image 
+            // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
+            src= "/img/default.png"
+            alt="dp" 
+            width={150} 
+            height={150}
+            className="max-sm:w-32 max-sm:h-32 rounded-circle"
+          />
           <h4 className='mt-6 text-2xl'>{worker.name}</h4>
           <p className='mb-2 text-sm'>{worker.job_desk}</p>
           <p className='mb-2 text-[#9EA0A5] flex gap-2'>

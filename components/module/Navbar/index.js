@@ -5,8 +5,8 @@ function Navbar() {
 
   return (
     <>
-     {/* { (localStorage.getItem('token')) ? <NavAfterLogin /> : <NavBeforeLogin /> } */}
-     <NavAfterLogin />
+     { (localStorage.getItem('token')) ? <NavAfterLogin /> : <NavBeforeLogin /> }
+     {/* <NavAfterLogin /> */}
     </>
   )
 }

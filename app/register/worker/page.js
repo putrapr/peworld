@@ -5,8 +5,6 @@ import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
-// import api from '@/config/api'
-// import { register } from '@/service/worker'
 import axios from 'axios'
 
 const Page = () => {
@@ -30,8 +28,7 @@ const Page = () => {
       phone: e.target.phone.value,
     }
     
-    const env = process.env.NEXT_PUBLIC_URL_BE
-    axios.post(env+'/v1/workers/register', data)
+    axios.post('/v1/workers/register', data)
       .then((res) => {
         Swal.fire({
           icon: "success",

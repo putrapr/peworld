@@ -13,13 +13,12 @@ const NavAfterLogin = () => {
     const token = localStorage.getItem('token')
     const decoded = jwtDecode(token)
     localStorage.clear()
-    // cookies().delete('token')
     router.push(`/login/${decoded.role}`)
   }
 
   return (
     <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 max-sm:px-4 px-[8.5rem] drop-shadow-md'>
-      <Link href="/dashboard">
+      <Link href="/home">
         <Image
           src="/icons/logo-purple.svg"
           alt="peworld logo"

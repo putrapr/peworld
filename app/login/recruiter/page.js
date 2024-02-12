@@ -15,8 +15,8 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value
     }
-    const env = process.env.NEXT_PUBLIC_URL_BE
-    axios.post(env+'/v1/auth/login', data)
+
+    axios.post('/v1/auth/login', data)
       .then((res) => {
         const result = res.data.data
         if (result.role === 'recruiter') {

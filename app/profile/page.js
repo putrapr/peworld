@@ -1,29 +1,17 @@
-'use client'
-// import { useRouter } from 'next/navigation'
-// import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
-// import api from '@/config/api'
+import { getProfile } from '@/service/worker'
 
-const Page = () => {  
-  // const router = useRouter()
-  // const [worker, setWorker] = useState([])
-  // const getWorker = async () => {
-  //   const result = await api.get('/workers/profile')
-  //   setWorker(result.data.data)
+const Page = async () => {  
+  const worker = await getProfile()
+  // const worker = {
+  //   name: 'a',
+  //   job_desk: 'b',
+  //   workplace: 'c',
+  //   description: 'd'
   // }
-  // useEffect(()=> {
-  //   getWorker()
-  // })
-
-  const worker = {
-    name: 'a',
-    job_desk: 'b',
-    workplace: 'c',
-    description: 'd'
-  }
 
   return (
     <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>
@@ -67,8 +55,10 @@ const Page = () => {
           <p className='w-[700px] text-[#9EA0A5] text-sm my-6'>
             {worker.description}
           </p>
-          <Button onClick={() => router.push('/profile/edit')} className='w-72 h-12 text-sm'>Edit</Button>
-
+          <Link href='/profile/edit' className='flex justify-center items-center w-72 h-12 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
+          >Edit</Link>
+          {/* <Button onClick={() => router.push('/profile/edit')} className='w-72 h-12 text-sm'>Edit</Button> */}
+          {/* <Button className='w-72 h-12 text-sm'>Edit</Button> */}
           <h4 className='font-bold text-xl mt-10'>Skill</h4>
           <div className='flex flex-wrap w-80 mt-3 text-xs'>
             <Skill className='py-1'>PHP</Skill>

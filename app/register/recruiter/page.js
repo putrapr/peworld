@@ -30,8 +30,7 @@ const Page = () => {
       password: pass
     }
 
-    const env = process.env.NEXT_PUBLIC_URL_BE
-    axios.post(env+'/v1/recruiters/register', data)
+    axios.post('/v1/recruiters/register', data)
       .then((res) => {
         Swal.fire({
           icon: "success",

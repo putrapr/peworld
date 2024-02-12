@@ -1,32 +1,64 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
+import { getProfile } from '@/service/worker'
 import api from '@/config/api'
+// import { NextResponse } from "next/server"
 
-const Page = () => {
-  const router = useRouter()
-  const [newData, setNewData] = useState({})
-  const [worker, setWorker] = useState([])
-  const getWorker = async () => {
-    const result = await api.get('/workers/profile')
-    setWorker(result.data.data)
-    setNewData(result.data.data)
+const Page = async () => {
+  const worker = await getProfile()
+
+  const updateProfile = async (form) => {
+    'use server'
+  
+    const data = {
+      name: form.get('name'),
+      job_desk: form.get('job_desk'),
+      domicile: form.get('domicile'),
+      workplace: form.get('workplace'),
+      description: form.get('description')
+    }
+  
+    try {
+      const result = await api.put('v1/workers/profile', data)
+      // worker = await getProfile()
+      // redirect(new URL('/profile/edit','http://localhost:3000'))
+      // res.redirect(`/profile/edit`)
+      // return result.data.data
+      // return NextResponse.redirect(new URL('/profile/edit', 'http://localhost:3000'))
+      // window.location.reload ()
+    } catch (err) {
+      return Promise.reject('pesan error: '+err)
+    }
   }
 
-  const updateProfile = async () => {
-    await api.put('/workers/profile', newData)
-
-  }
-
-  // value={form.email} onChange={(e) => setForm({...form, email: e.target.value})}
-  useEffect(()=> {
-    getWorker()
-  })
-
+  // const updateProfile = async (form) => {
+  //   'use server'
+  
+  //   const data = {
+  //     name: form.get('name'),
+  //     job_desk: form.get('job_desk'),
+  //     domicile: form.get('domicile'),
+  //     workplace: form.get('workplace'),
+  //     description: form.get('description')
+  //   }
+  
+  //   try {
+  //     const result = await api.put('v1/workers/profile', data)
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Berhasil Simpan !",
+  //     }) 
+  //     return result.data.data
+  //   } catch (err) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Gagal simpan data",
+  //     }) 
+  //     return Promise.reject('pesan error: '+err.response)
+  //   }
+    
   return (
     <div className='bg-[#F6F7F8] -mb-60'>
       <div className='w-full h-[400px] bg-[#5E50A1]'></div>
@@ -72,10 +104,10 @@ const Page = () => {
               </div>
             </div>
             {/* Button */}
-            <div className='mt-5'>
+            {/* <div className='mt-5'>
               <Button className='w-full h-12 text-sm'>Simpan</Button>
               <ButtonOutline className='w-full h-10 mt-4 text-sm'>Batal</ButtonOutline>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Side */}
@@ -85,17 +117,22 @@ const Page = () => {
             <div className='bg-white rounded-lg'>
               <h4 className='text-xl pl-8 pt-8'>Data diri</h4>
               <hr className='mt-4 bg-[#C4C4C4]' />
-              <div className='p-8'>
-                <Input defaultValue={worker.name} label='Nama Lengkap' placeholder='Masukan nama lengkap'/>
-                <Input defaultValue={worker.job_desk} label='Job desk' placeholder='Masukan job desk'/>
-                <Input defaultValue={worker.domicile} label='Domisili' placeholder='Masukan domisili'/>
-                <Input defaultValue={worker.workplace} label='Tempat kerja' placeholder='Masukan tempat kerja'/>
+              <form action={updateProfile} className='p-8'>
+                <Input name='name' defaultValue={worker.name} label='Nama Lengkap' placeholder='Masukan nama lengkap'/>
+                <Input name='job_desk' defaultValue={worker.job_desk} label='Jabatan' placeholder='Masukan jabatan'/>
+                <Input name='domicile' defaultValue={worker.domicile} label='Domisili' placeholder='Masukan domisili'/>
+                <Input name='workplace' defaultValue={worker.workplace} label='Tempat kerja' placeholder='Masukan tempat kerja'/>
                 
                 <div className="mb-3 flex flex-col">
-                  <label for="deskripsi-diri" className='text-xs text-[#9EA0A5] ms-2'>Deskripsi singkat</label>
-                  <textarea defaultValue={worker.description} className="text-sm border p-3 mt-1 rounded" id="deskripsi-diri" rows="6" placeholder='Tuliskan deskripsi singkat'></textarea>
+                  <label htmlFor="deskripsi-diri" className='text-xs text-[#9EA0A5] ms-2'>Deskripsi singkat</label>
+                  <textarea name='description' defaultValue={worker.description} className="text-sm border p-3 mt-1 rounded focus:outline-[#5E50A1]" id="deskripsi-diri" rows="6" placeholder='Tuliskan deskripsi singkat'></textarea>
                 </div>
-              </div>              
+
+                <div className='mt-8 flex gap-6'>
+                  <ButtonOutline className='w-full h-12 text-sm'>Batal</ButtonOutline>
+                  <Button type='submit' className='w-full h-12 text-sm'>Simpan</Button>                  
+                </div>
+              </form>             
             </div>
 
             {/* Skill */}
@@ -121,7 +158,7 @@ const Page = () => {
                   <Input label='Bulan/tahun' placeholder='Januari 2018' className='w-1/2'/>
                 </div>
                 <div className="mb-3">
-                  <label for="deskripsi-pekerjaan" className='text-[#9EA0A5] text-xs ms-2'>Deskripsi singkat</label>
+                  <label htmlFor="deskripsi-pekerjaan" className='text-[#9EA0A5] text-xs ms-2'>Deskripsi singkat</label>
                   <textarea className="w-full text-sm border p-3 rounded mt-1" id="deskripsi-pekerjaan" rows="5" placeholder='Deskripsikan pekerjaan anda'></textarea>
                 </div>
                 <hr className='my-8 bg-[#C4C4C4]'/>
@@ -137,20 +174,20 @@ const Page = () => {
               <div className='px-8 pt-6 pb-10'>
                 <Input label='Nama aplikasi' placeholder='Masukan nama aplikasi' />
                 <Input label='Link Repository' placeholder='Masukan link repository' />
-                <label for="posisi" className='text-[#9EA0A5] text-xs'>Type Portofolio</label>
+                <label htmlFor="posisi" className='text-[#9EA0A5] text-xs'>Type Portofolio</label>
                 <div id='radioapp' className='flex'>
                   <div className='flex items-center border border-[#E2E5ED] rounded px-4'>                    
                     <input type="radio" id="aplikasimobile" name="typeapp" value="mobile" checked/> 
-                    <label className='ms-2 text-sm' for="aplikasimobile">Aplikasi mobile</label>
+                    <label className='ms-2 text-sm' htmlFor="aplikasimobile">Aplikasi mobile</label>
                   </div>
                   
                   <div className='flex items-center p-3 ms-5'>
                     <input type="radio" id="aplikasiweb" name="typeapp" value="web"/> 
-                    <label className='ms-2 text-sm' for="aplikasiweb">Aplikasi web</label>
+                    <label className='ms-2 text-sm' htmlFor="aplikasiweb">Aplikasi web</label>
                   </div>                  
                 </div>
                 <div className="mb-3 mt-4">
-                  <label for="posisi" className="text-[#9EA0A5] text-xs">Upload gambar</label>
+                  <label htmlFor="posisi" className="text-[#9EA0A5] text-xs">Upload gambar</label>
                   <button type="button" className='mt-2'>
                     <Image 
                       src="/img/edit-profile/inputFile.svg"

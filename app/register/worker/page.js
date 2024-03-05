@@ -47,50 +47,6 @@ const Page = () => {
         })
         router.push('/register/worker')
       })
-    
-    // try {
-    //   await register(data)
-    //   Swal.fire({
-    //     icon: "success",
-    //     title: "Daftar Sukses",
-    //     text: "Akun berhasil dibuat, silahkan masuk",
-    //   })
-    //   router.push('/login/worker')
-    // } catch(err) {
-    //   // const text = (err.response.data.message == 'user sudah terdaftar') ? 
-    //   //     'Akun sudah terdaftar, silahkan masuk' : 'Gagal daftar akun'
-    //   console.log(err.message)
-    //   // Swal.fire({
-    //   //   icon: "error",
-    //   //   title: "Daftar Gagal",
-    //   //   text
-    //   // })
-    //   // router.push('/register/worker')
-    // }
-    
-
-    
-
-    // fetch(`${env}/workers/register`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data) }
-    // ).then ( async (res) => {
-    //   if(!res.ok){
-    //    const result =  await res.json()
-    //     throw result.message
-    //   }
-    //   return res.json()
-    // }).catch ( (err) => {
-    //   return Swal.fire({
-    //     icon: "error",
-    //     title: "Login Error",
-    //     text: err.message,
-    //   })
-    // })   
   }
 
   return (

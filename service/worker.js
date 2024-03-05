@@ -49,30 +49,30 @@ export const getProfile = async () => {
   }
 }
 
-export const updateProfile = async (form) => {
-  'use server'
+// export const updateProfile = async (form) => {
+//   'use server'
 
-  const data = {
-    name: form.get('name'),
-    job_desk: form.get('job_desk'),
-    domicile: form.get('domicile'),
-    workplace: form.get('workplace'),
-    description: form.get('description')
-  }
+//   const data = {
+//     name: form.get('name'),
+//     job_desk: form.get('job_desk'),
+//     domicile: form.get('domicile'),
+//     workplace: form.get('workplace'),
+//     description: form.get('description')
+//   }
 
-  try {
-    const result = await api.put('v1/workers/profile', data)
-    Swal.fire({
-      icon: "success",
-      title: "Berhasil Simpan !",
-    }) 
-    return result.data.data
-  } catch (err) {
-    Swal.fire({
-      icon: "error",
-      title: "Gagal simpan data",
-    }) 
-    return Promise.reject('pesan error: '+err.response)
-  }
+//   try {
+//     const result = await api.put('v1/workers/profile', data)
+//     Swal.fire({
+//       icon: "success",
+//       title: "Berhasil Simpan !",
+//     }) 
+//     return result.data.data
+//   } catch (err) {
+//     Swal.fire({
+//       icon: "error",
+//       title: "Gagal simpan data",
+//     }) 
+//     return Promise.reject('pesan error: '+err.response)
+//   }
 
-}
+// }

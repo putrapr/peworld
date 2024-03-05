@@ -47,14 +47,14 @@ const Home = async () => {
         </div>
 
         <div className='w-full flex justify-center gap-4 mt-14'>
-          <ButtonPage>
+          {/* <ButtonPage>
             <Image
               src='/icons/arrow-left.svg'
               alt='arrow-left'
               width={12}
               height={20}
             />
-          </ButtonPage>
+          </ButtonPage> */}
           <ButtonPage checked>1</ButtonPage>
           <ButtonPage>2</ButtonPage>
           <ButtonPage>3</ButtonPage>

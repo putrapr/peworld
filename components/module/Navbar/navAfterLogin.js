@@ -10,6 +10,7 @@ const NavAfterLogin = () => {
   const router = useRouter()
 
   const handleLogout = () => {
+    
     const token = localStorage.getItem('token')
     const decoded = jwtDecode(token)
     localStorage.clear()

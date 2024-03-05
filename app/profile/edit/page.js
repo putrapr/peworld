@@ -1,37 +1,53 @@
+'use client'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
-import { getProfile } from '@/service/worker'
-import api from '@/config/api'
+// import { getProfile } from '@/service/worker'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+// import api from '@/config/api'
 // import { NextResponse } from "next/server"
 
-const Page = async () => {
-  const worker = await getProfile()
+const Page = () => {
+  // const worker = await getProfile()
 
-  const updateProfile = async (form) => {
-    'use server'
+  const [worker, setWorker] = useState({})
+
+  const getProfile = async () => {
+    const res = await axios.get('/v1/workers/profile', {
+      withCredentials: true
+    })
+    setWorker(res.data.data)
+  } 
+
+  useEffect(()=> {
+    getProfile()
+  })
+
+  // const updateProfile = async (form) => {
+  //   'use server'
   
-    const data = {
-      name: form.get('name'),
-      job_desk: form.get('job_desk'),
-      domicile: form.get('domicile'),
-      workplace: form.get('workplace'),
-      description: form.get('description')
-    }
+  //   const data = {
+  //     name: form.get('name'),
+  //     job_desk: form.get('job_desk'),
+  //     domicile: form.get('domicile'),
+  //     workplace: form.get('workplace'),
+  //     description: form.get('description')
+  //   }
   
-    try {
-      const result = await api.put('v1/workers/profile', data)
-      // worker = await getProfile()
-      // redirect(new URL('/profile/edit','http://localhost:3000'))
-      // res.redirect(`/profile/edit`)
-      // return result.data.data
-      // return NextResponse.redirect(new URL('/profile/edit', 'http://localhost:3000'))
-      // window.location.reload ()
-    } catch (err) {
-      return Promise.reject('pesan error: '+err)
-    }
-  }
+  //   try {
+  //     const result = await api.put('v1/workers/profile', data)
+  //     // worker = await getProfile()
+  //     // redirect(new URL('/profile/edit','http://localhost:3000'))
+  //     // res.redirect(`/profile/edit`)
+  //     // return result.data.data
+  //     // return NextResponse.redirect(new URL('/profile/edit', 'http://localhost:3000'))
+  //     // window.location.reload ()
+  //   } catch (err) {
+  //     return Promise.reject('pesan error: '+err)
+  //   }
+  // }
 
   // const updateProfile = async (form) => {
   //   'use server'
@@ -117,7 +133,7 @@ const Page = async () => {
             <div className='bg-white rounded-lg'>
               <h4 className='text-xl pl-8 pt-8'>Data diri</h4>
               <hr className='mt-4 bg-[#C4C4C4]' />
-              <form action={updateProfile} className='p-8'>
+              <form  className='p-8'>
                 <Input name='name' defaultValue={worker.name} label='Nama Lengkap' placeholder='Masukan nama lengkap'/>
                 <Input name='job_desk' defaultValue={worker.job_desk} label='Jabatan' placeholder='Masukan jabatan'/>
                 <Input name='domicile' defaultValue={worker.domicile} label='Domisili' placeholder='Masukan domisili'/>

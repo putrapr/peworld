@@ -1,5 +1,5 @@
 import api from '@/config/api'
-import Swal from 'sweetalert2'
+import axios from 'axios'
 // import axios from 'axios'
 // const env = process.env.NEXT_PUBLIC_URL_BE
 
@@ -33,7 +33,9 @@ export const getWorkers = async ()=>{
     
     // const result = await axios.get(env+'/v1/workers')
     // const env = process.env.NEXT_PUBLIC_URL_BE
-    const result = await api.get('/v1/workers')
+    // const result = await api.get('/v1/workers')
+
+    const result = await axios.get('/v1/workers')
     return result.data.data
   } catch (err) {
     return Promise.reject(err.response)

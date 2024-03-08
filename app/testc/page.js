@@ -11,10 +11,12 @@ import Section3 from '@/components/template/Landing/section3'
 import Section4 from '@/components/template/Landing/section4'
 import Section5 from '@/components/template/Landing/section5'
 import Section2W from '@/components/template/Worker/section2'
+import Portofolio from '@/components/module/Portofolio'
 
 export default function Home() {
   return (
     <>
+    <Portofolio />
     {/* <Input className='mb-3' placeholder="Masukan nama lengkap" label='Nama Lengkap'/> */}
       {/* <Section2W /> */}
       {/* <Section5 /> */}

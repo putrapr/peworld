@@ -1,27 +1,17 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-// import Skill from '@/components/base/Skill'
+import Skill from '@/components/base/Skill'
 import Button from '@/components/base/Button'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 const Index = ({ data }) => {
   const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
-  // const arrSkill = [];
-  // if (skills != '-') {                
-  //   const arrSkills = skills.split(", ");
-  //   arrSkills.forEach((item) => {
-  //     arrSkill.push(
-  //       <Skill>{item}</Skill>
-  //     );
-  //   });          
-  // }
 
   // const handleClick = (path, data) => {
   //   navigation.push({ pathname: path, query: { data: JSON.stringify(data) } });
   // }
-
   return (
     <div>
       <div className='flex justify-between'>
@@ -39,21 +29,29 @@ const Index = ({ data }) => {
             <h4 className='text-2xl'>{name}</h4>
             <p className='text-sm text-[#9EA0A5]'>{job_desk}</p>
             <p className='text-sm text-[#9EA0A5] mt-1 flex gap-2'>
-              <Image
-                src='\icons\locate.svg'
-                alt='locate'
-                width={15}
-                height={15}
-              />
+              { domicile && 
+                <Image
+                  src='\icons\locate.svg'
+                  alt='locate'
+                  width={15}
+                  height={15}
+                />
+              }
               <p>{domicile}</p>              
             </p>
-            {/* <div className='flex gap-2 mt-3'>
-              { arrSkill }
-            </div>                   */}
+            <div className='flex gap-2 mt-3'>
+              { 
+                skills.map((item, index) => (
+                  <Skill key={index}>{item}</Skill>
+                ))
+              }
+            </div>                  
           </div>
         </div>
         <div className='max-sm:hidden flex items-center'>
-          <Button onClick={() => router.push('/worker/'+id)} className='w-36 h-12 max-sm:mr-0 mr-20 font-normal text-sm'>Lihat Profile</Button>
+          <Button className='w-36 h-12 max-sm:mr-0 mr-20 font-normal text-sm'
+            onClick={() => router.push('/worker/'+id)}
+          >Lihat Profile</Button>
         </div>
       </div>
       <hr />

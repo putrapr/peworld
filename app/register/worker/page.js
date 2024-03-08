@@ -38,8 +38,11 @@ const Page = () => {
         router.push('/login/worker')
       })
       .catch((err) => {
-        const text = (err.response.data.message == 'user sudah terdaftar') ? 
-          'Akun sudah terdaftar, silahkan masuk' : 'Gagal daftar akun'
+        console.log(err)
+        // const text = (err.response.data.message == 'user sudah terdaftar') ? 
+        //   'Akun sudah terdaftar, silahkan masuk' : 'Gagal daftar akun'
+          const text = (err.response.data.message == 'user sudah terdaftar') ? 
+          'Akun sudah terdaftar, silahkan masuk' : err.message
         Swal.fire({
           icon: "error",
           title: "Daftar Gagal",
@@ -67,7 +70,8 @@ const Page = () => {
       <div className='max-sm:w-full w-2/5 mb-10'>
         <form onSubmit={handleSubmit}>
           <h2 className='text-3xl font-bold mt-16'>Halo, Pewpeople</h2>
-          <p className='text-lg mt-4 mb-12'>Isi data di bawah ini untuk registrasi akun mu</p>
+          <p className='text-lg mt-4'>Isi data di bawah ini untuk registrasi akunmu</p>
+          <p className='text-lg mb-8'>(Daftar sebagai Pekerja)</p>
           <Input name='name' type='text' label='Nama' placeholder='Masukan nama panjang' required/>
           <Input name='email' type='email' label='Email' placeholder='Masukan alamat email' required/>
           <Input name='phone' type='text' onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()} label='No Handphone' placeholder='Masukan no handphone' required/>
@@ -76,6 +80,7 @@ const Page = () => {
           <Button type='submit' bgColor='yellow' className='w-full h-12 my-6'>Daftar</Button>
           <div className='text-center'>
             <p>Anda sudah punya akun? <Link href="/login/worker" className='text-[#FBB017]'>Masuk Sini</Link></p>
+            <p>Atau ingin <Link href="/register/recruiter" className='text-[#FBB017]'>Daftar</Link> sebagai Perekrut</p>
           </div>
         </form>
       </div>      

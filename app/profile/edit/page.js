@@ -3,77 +3,32 @@ import Image from 'next/image'
 import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
-// import { getProfile } from '@/service/worker'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-// import api from '@/config/api'
-// import { NextResponse } from "next/server"
+import Skill from '@/components/base/Skill'
 
 const Page = () => {
-  // const worker = await getProfile()
-
+  // States
   const [worker, setWorker] = useState({})
+  const [skills, setSkills] = useState([])
+  const [skill, setSkill] = useState('')
 
+  // Functions
   const getProfile = async () => {
-    const res = await axios.get('/v1/workers/profile', {
-      withCredentials: true
-    })
+    const res = await axios.get('/v1/workers/profile', {withCredentials: true})
     setWorker(res.data.data)
-  } 
+  }
 
+  const getSkills = async () => {
+    const res = await axios.get('/v1/skills')
+    setSkills(res.data.data)
+  }
+  
+  // Hook
   useEffect(()=> {
     getProfile()
-  })
-
-  // const updateProfile = async (form) => {
-  //   'use server'
-  
-  //   const data = {
-  //     name: form.get('name'),
-  //     job_desk: form.get('job_desk'),
-  //     domicile: form.get('domicile'),
-  //     workplace: form.get('workplace'),
-  //     description: form.get('description')
-  //   }
-  
-  //   try {
-  //     const result = await api.put('v1/workers/profile', data)
-  //     // worker = await getProfile()
-  //     // redirect(new URL('/profile/edit','http://localhost:3000'))
-  //     // res.redirect(`/profile/edit`)
-  //     // return result.data.data
-  //     // return NextResponse.redirect(new URL('/profile/edit', 'http://localhost:3000'))
-  //     // window.location.reload ()
-  //   } catch (err) {
-  //     return Promise.reject('pesan error: '+err)
-  //   }
-  // }
-
-  // const updateProfile = async (form) => {
-  //   'use server'
-  
-  //   const data = {
-  //     name: form.get('name'),
-  //     job_desk: form.get('job_desk'),
-  //     domicile: form.get('domicile'),
-  //     workplace: form.get('workplace'),
-  //     description: form.get('description')
-  //   }
-  
-  //   try {
-  //     const result = await api.put('v1/workers/profile', data)
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Berhasil Simpan !",
-  //     }) 
-  //     return result.data.data
-  //   } catch (err) {
-  //     Swal.fire({
-  //       icon: "error",
-  //       title: "Gagal simpan data",
-  //     }) 
-  //     return Promise.reject('pesan error: '+err.response)
-  //   }
+    getSkills()
+  },[])
     
   return (
     <div className='bg-[#F6F7F8] -mb-60'>
@@ -159,6 +114,22 @@ const Page = () => {
                 <div className="flex gap-6">
                   <input type="text" className='text-sm w-full h-[50px] border p-3' placeholder="Java"/>
                   <Button bgColor='yellow' className='w-20 h-[50px] text-xs'>Simpan</Button>
+                </div>
+                <div className='flex gap-2 mt-3'>
+                  { 
+                    skills.map((item, index) => (
+                      <Skill key={index} className='group flex items-center'
+                      >{item.skill_name} <button className='hidden group-hover:inline -mr-3 ms-1'
+                        ><Image
+                            src='/icons/delete.svg'
+                            alt='delete'
+                            width={20}
+                            height={20}
+                          />
+                        </button>
+                      </Skill>
+                    ))
+                  }
                 </div>
               </div>
             </div>

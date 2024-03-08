@@ -55,15 +55,17 @@ const Page = () => {
       <div className='max-sm:w-full w-1/2 h-full'>
         <form onSubmit={handleSubmit}> 
           <h2 className='text-3xl font-bold mt-16'>Halo, Pewpeople</h2>
-          <p className='text-lg mt-4 mb-12'>Silahkan masuk untuk mengakses profilmu</p>
+          <p className='text-lg mt-4'>Silahkan masuk untuk mengakses profilmu</p>
+          <p className='text-lg mb-8'>(Masuk sebagai Pekerja)</p>
           <Input name='email' type='email' label='Email' placeholder='Masukan alamat email'/>
           <Input name='password' type='password' label='Kata Sandi' placeholder='Masukan kata sandi'/>
-          <div className='text-end'>
+          {/* <div className='text-end'>
             <Link href="/home" className='text-[#1F2A36]'>Lupa kata sandi?</Link>
-          </div>
+          </div> */}
           <Button type='submit' bgColor='yellow' className='w-full h-12 my-6'>Masuk</Button>
           <div className='text-center'>
             <p>Anda belum punya akun? <Link href="/register/worker" className='text-[#FBB017]'>Daftar Sini</Link></p>
+            <p>Atau ingin masuk sebagai <Link href="/login/recruiter" className='text-[#FBB017]'>Perekrut</Link></p>
           </div>
         </form>        
       </div>

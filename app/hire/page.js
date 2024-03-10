@@ -4,7 +4,7 @@ import Skill from '@/components/base/Skill'
 import Input from '@/components/base/Input'
 import Button from '@/components/base/Button'
 
-const page = () => {
+const Hire = () => {
   const skill = ['Phyton', 'Laravel', 'Golang', 'Javascript', 'PHP', 'HTML', 'C++', 'Kotlin', 'Swift']
   return (
     <div className='bg-[#F6F7F8]'>
@@ -74,4 +74,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Hire

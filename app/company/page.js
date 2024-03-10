@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Button from '@/components/base/Button'
 
-const page = () => {
+const Company = () => {
   return (
     <div className='bg-[#F6F7F8]'>
       {/* Main Content */}
@@ -62,4 +62,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Company

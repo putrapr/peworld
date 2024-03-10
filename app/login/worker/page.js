@@ -7,8 +7,9 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
-const Page = () => {
+const LoginWorker = () => {
   const router = useRouter()
+  
   const handleSubmit = async (e) => {
     e.preventDefault()    
     const data = {
@@ -20,12 +21,12 @@ const Page = () => {
       .then((res) => {
         const result = res.data.data
         if (result.role === 'worker') {
-          // localStorage.setItem("token", result.token)
+          localStorage.setItem('token', result.token)
           Swal.fire({
             icon: "success",
             title: "Masuk Sukses",
-          })        
-          router.push('/')
+          })               
+          router.push('/') 
         } else {
           throw 'Not a recruiter account'
         }
@@ -73,4 +74,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default LoginWorker

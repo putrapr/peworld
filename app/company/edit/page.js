@@ -4,7 +4,7 @@ import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
 
-const page = () => {
+const CompanyEdit = () => {
   return (
     <div className='bg-[#F6F7F8]'>
       <div className='w-full h-[400px] bg-[#5E50A1]'></div>
@@ -113,4 +113,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CompanyEdit

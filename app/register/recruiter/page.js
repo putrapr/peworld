@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const Page = () => {
+const RegisterRecruiter = () => {
   const router = useRouter()
 
   const handleSubmit = async (e) => {
@@ -89,4 +89,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default RegisterRecruiter

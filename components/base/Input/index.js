@@ -1,7 +1,7 @@
 import React from 'react'
 
 {/* <Input label='Nama Lengkap' placeholder='Masukan nama lengkap'/> */}
-const index = ({ type='text', className, label, ...props }) => {
+const Input = ({ type='text', className, label, ...props }) => {
   return (
     <div className={'mb-6 '+className}>
       <label className='text-[#9EA0A5] text-xs ms-2'>{label}</label>
@@ -10,4 +10,4 @@ const index = ({ type='text', className, label, ...props }) => {
   )
 }
 
-export default index
+export default Input

@@ -1,19 +1,19 @@
-import Button from '@/components/base/Button'
-import ButtonOutline from '@/components/base/ButtonOutline'
-import Skill from '@/components/base/Skill'
-import Input from '@/components/base/Input'
-import Nav from '@/components/module/Navbar/navBeforeLogin'
-import Nav2 from '@/components/module/Navbar/navAfterLogin'
-import Footer from '@/components/module/Footer'
-import Section1 from '@/components/template/Landing/section1'
-import Section2 from '@/components/template/Landing/section2'
-import Section3 from '@/components/template/Landing/section3'
-import Section4 from '@/components/template/Landing/section4'
-import Section5 from '@/components/template/Landing/section5'
-import Section2W from '@/components/template/Worker/section2'
+// import Button from '@/components/base/Button'
+// import ButtonOutline from '@/components/base/ButtonOutline'
+// import Skill from '@/components/base/Skill'
+// import Input from '@/components/base/Input'
+// import Nav from '@/components/module/Navbar/navBeforeLogin'
+// import Nav2 from '@/components/module/Navbar/navAfterLogin'
+// import Footer from '@/components/module/Footer'
+// import Section1 from '@/components/template/Landing/section1'
+// import Section2 from '@/components/template/Landing/section2'
+// import Section3 from '@/components/template/Landing/section3'
+// import Section4 from '@/components/template/Landing/section4'
+// import Section5 from '@/components/template/Landing/section5'
+// import Section2W from '@/components/template/Worker/section2'
 import Portofolio from '@/components/module/Portofolio'
 
-export default function Home() {
+export default function Testc() {
   return (
     <>
     <Portofolio />

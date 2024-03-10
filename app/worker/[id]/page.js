@@ -7,7 +7,7 @@ import Card from '@/components/module/Card'
 import Skill from '@/components/base/Skill'
 import axios from 'axios'
 
-const Page = ({params: {id}}) => {
+const WorkerId = ({params: {id}}) => {
   const [worker, setWorker] = useState({})
   const [tab, setTab] = useState(false)
   const borderTab = 'border-b-4 border-[#5E50A1]'
@@ -189,4 +189,4 @@ const Page = ({params: {id}}) => {
   )
 }
 
-export default Page
+export default WorkerId

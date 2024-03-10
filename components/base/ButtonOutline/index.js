@@ -1,6 +1,6 @@
 import React from 'react'
 
-const index = ({ borderColor = 'purple', className, children, ...props }) => {
+const ButtonOutline = ({ borderColor = 'purple', className, children, ...props }) => {
   if (borderColor == 'purple') borderColor = 'border-[#5E50A1] text-[#5E50A1]'
   else if (borderColor == 'yellow') borderColor = 'border-[#FBB017] text-[#FBB017]'
   return (
@@ -8,4 +8,4 @@ const index = ({ borderColor = 'purple', className, children, ...props }) => {
   )
 }
 
-export default index
+export default ButtonOutline

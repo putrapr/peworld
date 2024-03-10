@@ -5,7 +5,7 @@ import Skill from '@/components/base/Skill'
 import Button from '@/components/base/Button'
 // import Link from 'next/link'
 
-const Index = ({ data }) => {
+const Card = ({ data }) => {
   const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
 
@@ -59,4 +59,4 @@ const Index = ({ data }) => {
   )
 }
 
-export default Index
+export default Card

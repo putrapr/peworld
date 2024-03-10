@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const section4 = ({ className }) => {
+const Section4 = ({ className }) => {
   const data = [
     {
       image: '/img/landing/4.svg',
@@ -50,4 +50,4 @@ const section4 = ({ className }) => {
   )
 }
 
-export default section4
+export default Section4

@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const Page = () => {
+const LoginRecruiter = () => {
   const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,7 +20,7 @@ const Page = () => {
       .then((res) => {
         const result = res.data.data
         if (result.role === 'recruiter') {
-          // localStorage.setItem("token", result.token)
+          localStorage.setItem("token", result.token)
           
           Swal.fire({
             icon: "success",
@@ -74,4 +74,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default LoginRecruiter

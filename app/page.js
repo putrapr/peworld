@@ -1,13 +1,18 @@
-import React from 'react'
-
+'use client'
+import { useEffect } from 'react'
 import Section1 from '@/components/template/Landing/section1'
 import Section2 from '@/components/template/Landing/section2'
 import Section3 from '@/components/template/Landing/section3'
 import Section4 from '@/components/template/Landing/section4'
 import Section5 from '@/components/template/Landing/section5'
 
-
 const LandingPage = () => {
+
+
+  useEffect(() => {
+    // location.reload()
+  },[])
+
   return (   
     <main>
       <Section1 className='pl-[8.5rem] pr-28 mt-14'/>

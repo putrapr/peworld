@@ -4,17 +4,29 @@ import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Button from '@/components/base/Button'
 import { jwtDecode } from "jwt-decode";
-// import { cookies } from 'next/headers';
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const NavAfterLogin = () => {
   const router = useRouter()
 
-  const handleLogout = () => {
-    
-    // const token = localStorage.getItem('token')
-    // const decoded = jwtDecode(token)
-    // localStorage.clear()
-    // router.push(`/login/${decoded.role}`)
+  const handleLogout = async () => {
+    try {
+      await axios.get('/v1/auth/logout')
+      Swal.fire({
+        icon: "success",
+        title: "Logout Berhasil",
+      })
+      const token = localStorage.getItem('token')
+      const decoded = jwtDecode(token)
+      localStorage.clear()
+      router.push(`/login/${decoded.role}`)
+    } catch (err) {
+      Swal.fire({
+        icon: "success",
+        title: "Gagal Logout",
+      })
+    }    
   }
 
   return (
@@ -32,7 +44,6 @@ const NavAfterLogin = () => {
         <ButtonOutline onClick={handleLogout} className='w-20 h-10 text-sm'>Logout</ButtonOutline>
         <Button onClick={() => router.push('/profile')}className='w-20 h-10 text-sm'>Profile</Button>
       </div>
-
     </nav>
   )
 }

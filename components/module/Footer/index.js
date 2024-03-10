@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const index = ({className}) => {
+const Footer = ({className}) => {
   return (
     <footer className={`w-full h-[330px] bg-[#5E50A1] ${className}`}>      
       <div className='flex flex-col max-sm:mx-4 mx-[8.5rem]'>
@@ -26,4 +26,4 @@ const index = ({className}) => {
   )
 }
 
-export default index
+export default Footer

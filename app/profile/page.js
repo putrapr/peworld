@@ -4,7 +4,7 @@ import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import { getProfile } from '@/service/worker'
 
-const Page = async () => {  
+const Profile = async () => {  
   const worker = await getProfile()
 
   // const worker = {
@@ -94,4 +94,4 @@ const Page = async () => {
   )
 }
 
-export default Page
+export default Profile

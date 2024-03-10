@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const section2 = ({ className }) => {
+const Section2 = ({ className }) => {
   const arrText = [
     'Talenta hebat tersaring dengan baik.',
     'Terdapat portofolio yang dapat dilihat secara real-time.',
@@ -43,4 +43,4 @@ const section2 = ({ className }) => {
   )
 }
 
-export default section2
+export default Section2

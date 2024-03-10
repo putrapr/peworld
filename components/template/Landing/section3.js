@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const section3 = ({ className }) => {
+const Section3 = ({ className }) => {
   const arrSkill1 = [ 'Java', 'Kotlin', 'PHP', 'Javascript']
   const arrSkill2 = ['Golang', 'C++', 'Ruby', '10+ Bahasa lainnya']
 
@@ -63,4 +63,4 @@ const section3 = ({ className }) => {
   )
 }
 
-export default section3
+export default Section3

@@ -1,5 +1,5 @@
 
-const index = ({ bgColor = 'purple', className,  children, ...props }) => {
+const Button = ({ bgColor = 'purple', className,  children, ...props }) => {
   if (bgColor == 'purple') bgColor = 'bg-[#5E50A1] hover:bg-[#53478c]'
   else if (bgColor == 'yellow') bgColor = 'bg-[#FBB017] hover:bg-[#EAA61B]'
   return (
@@ -8,4 +8,4 @@ const index = ({ bgColor = 'purple', className,  children, ...props }) => {
   )
 }
 
-export default index
+export default Button

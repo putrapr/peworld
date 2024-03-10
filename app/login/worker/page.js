@@ -20,7 +20,7 @@ const Page = () => {
       .then((res) => {
         const result = res.data.data
         if (result.role === 'worker') {
-          localStorage.setItem("token", result.token)
+          // localStorage.setItem("token", result.token)
           Swal.fire({
             icon: "success",
             title: "Masuk Sukses",

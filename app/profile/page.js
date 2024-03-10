@@ -6,11 +6,13 @@ import { getProfile } from '@/service/worker'
 
 const Page = async () => {  
   const worker = await getProfile()
+
   // const worker = {
   //   name: 'a',
   //   job_desk: 'b',
   //   workplace: 'c',
-  //   description: 'd'
+  //   description: 'd',
+  //   domicile: 'e'
   // }
 
   return (

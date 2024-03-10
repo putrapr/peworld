@@ -10,6 +10,33 @@ import axios from 'axios'
 //   return cookies().get(name)?.value ?? ''
 // }
 
+import {cookies} from 'next/headers'
+
+const getCookie = async (name) => {
+  return cookies().get(name)?.value ?? '';
+}
+const token = await getCookie('token')
+
+export const getProfile = async () => {  
+  try {
+    // const result = await api.get('v1/workers/profile')
+    const res = await fetch(process.env.NEXT_PUBLIC_URL_BE+'/v1/workers/profile',{
+      headers:{
+        "Content-Type": "application/json",
+        ...(token ? {"Cookie": `token=${token};path=/;expires=Session`}: {})
+        // "Cookie": `token=${token};path=/;expires=Session`
+      },
+      credentials: "include",
+      cache: 'no-store'
+    })
+    const result = await res.json()
+    console.log(result)
+    return result.data
+  } catch (err) {
+    return Promise.reject('pesan error: '+err.message)
+  }
+}
+
 export const getWorkers = async ()=>{
   try {
     // const token = await getCookie('token')
@@ -42,14 +69,7 @@ export const getWorkers = async ()=>{
   }  
 }
 
-export const getProfile = async () => {  
-  try {
-    const result = await api.get('v1/workers/profile')
-    return result.data.data
-  } catch (err) {
-    return Promise.reject('pesan error: '+err.message)
-  }
-}
+
 
 // export const updateProfile = async (form) => {
 //   'use server'

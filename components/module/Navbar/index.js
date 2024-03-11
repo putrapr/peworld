@@ -9,7 +9,7 @@ function Navbar() {
     if (typeof window !== 'undefined') {
       setNavRender((localStorage.getItem('token')) ? <NavAfterLogin/> : <NavBeforeLogin/>)
     }
-  },[window])
+  },[])
 
   return (
     <>

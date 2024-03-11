@@ -3,15 +3,11 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Skill from '@/components/base/Skill'
 import Button from '@/components/base/Button'
-// import Link from 'next/link'
 
 const Card = ({ data }) => {
   const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
 
-  // const handleClick = (path, data) => {
-  //   navigation.push({ pathname: path, query: { data: JSON.stringify(data) } });
-  // }
   return (
     <div>
       <div className='flex justify-between'>

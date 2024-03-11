@@ -5,7 +5,6 @@ import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
 import axios from 'axios'
-// import { getWorkers } from '@/service/worker'
 
 function useDebounce(effect, dependencies, delay) {
   const callback = useCallback(effect, dependencies);
@@ -17,7 +16,6 @@ function useDebounce(effect, dependencies, delay) {
 }
 
 const Home = () => {
-  // const worker = await getWorkers()
   // States
   const [worker, setWorker] = useState([])  
   const [params, setParams] = useState({
@@ -31,12 +29,13 @@ const Home = () => {
   const [toggleSort, setToggleSort] = useState(false)
   const [search, setSearch] = useState('')
 
+
   // Functions
   const getWorker = async () => {
     const result = await axios.get('/v1/workers/', {params})
     setWorker(() => result.data.data)
     setPageData(() => result.data.pagination)
-    // window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0 });
   }
 
   const nextPage = () => {
@@ -51,12 +50,6 @@ const Home = () => {
     setParams({...params, sort, sortBy})
   }
 
-  const handleSearch = (search) => {
-    setParams({...params, search, page: 1})
-    setPageData({...pageData, currentPage: 1})
-  }
-
-  
 
   // Hook
   useEffect(() => {

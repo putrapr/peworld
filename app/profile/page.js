@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from '@/components/base/Button'
+// import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import { getProfile } from '@/service/worker'
 
 const Profile = async () => {  
   const worker = await getProfile()
-
   // const worker = {
   //   name: 'a',
   //   job_desk: 'b',

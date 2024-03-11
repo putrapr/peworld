@@ -2,12 +2,12 @@ import getCookie from './getCookie'
 const token = await getCookie('token')
 import { redirect } from 'next/navigation'
 
-export const getProfile = async () => {
+export const getCompany = async () => {
   if (!token)
-    return redirect('/login/worker')
+    return redirect('/login/recruiter')
 
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_URL_BE+'/v1/workers/profile',{
+    const res = await fetch(process.env.NEXT_PUBLIC_URL_BE+'/v1/recruiters/profile',{
       headers:{
         "Content-Type": "application/json",
         // ...(token ? {"Cookie": `token=${token};path=/;expires=Session`}: {})

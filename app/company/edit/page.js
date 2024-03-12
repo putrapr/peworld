@@ -5,8 +5,8 @@ import Button from '@/components/base/Button'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
 import axios from 'axios'
-import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2'
 
 const CompanyEdit = () => {
   // States / Variables
@@ -17,7 +17,7 @@ const CompanyEdit = () => {
   // Functions
   const getProfile = async () => {
     try {
-      const res = await axios.get('/v1/recruiters/profile', {withCredentials: true})
+      const res = await axios.get('/v1/recruiters/profile', { withCredentials: true })
       const result = res.data.data
       setCompany(result)
       setProfile({
@@ -28,23 +28,23 @@ const CompanyEdit = () => {
     } catch (err) {
       Swal.fire({
         icon: "error",
-        text: "Error Get Profile",
+        text: "Gagal mendapatkan profil",
       }) 
     }
   }
 
   const updateProfile = async () => {
     try {
-      await axios.put('/v1/recruiters/profile', Company, {withCredentials: true})
+      await axios.put('/v1/recruiters/profile', Company, { withCredentials: true })
       Swal.fire({
         icon: "success",
-        title: "Profile Updated",
+        title: "Profil Berhasil Diperbarui",
       })
       getProfile()
     } catch(err) {
       Swal.fire({
         icon: "error",
-        text: "Error Update Profile",
+        text: "Gagal perbarui profil",
       }) 
     }
   }
@@ -96,7 +96,7 @@ const CompanyEdit = () => {
             </div>
             {/* Button */}
             <div className='mt-6'>
-              <Button onClick={() => updateProfile()}className='w-full h-12'>Simpan</Button>
+              <Button onClick={() => updateProfile()} className='w-full h-12'>Simpan</Button>
               <ButtonOutline onClick={() => router.push('/company')} className='w-full h-12 mt-4'>Batal & Kembali</ButtonOutline>
             </div>
           </div>
@@ -109,10 +109,6 @@ const CompanyEdit = () => {
               <h4 className='text-2xl pl-8 pt-8'>Data diri</h4>
               <hr className='mt-4' />
               <div className='p-8'>
-                {/* <Input label='Nama' placeholder='Masukan nama'
-                  value={Company.name} 
-                  onChange={(e) => setCompany({ ...Company, name: e.target.value })} 
-                /> */}
                 <Input label='Nama Perusahaan' placeholder='Masukan nama perusahaan'
                   value={Company.company} 
                   onChange={(e) => setCompany({ ...Company, company: e.target.value })} 

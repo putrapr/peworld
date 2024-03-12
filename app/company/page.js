@@ -20,7 +20,7 @@ const Company = async () => {
         
         <div className='mx-[4.5rem] -mt-20'>
           <Image src="/img/default.png" alt="logo" width={150} height={150}/>
-          <h4 className='mt-6 text-2xl'>{name}</h4>
+          <h4 className='mt-6 text-2xl'>{company}</h4>
           <p className='mt-1'>{position}</p>          
           { city && 
             <div className='text-[#9EA0A5] flex gap-2 text-sm mt-1'>
@@ -28,10 +28,9 @@ const Company = async () => {
               <p>{city}</p>
             </div>
           }
-          <p className='mt-4'>{company}</p>
-          <p className='text-[#9EA0A5] w-[700px] text-justify mt-8'>{description}</p>
-          {/* <Button className='w-80 h-12 mt-4'>Edit Profile</Button> */}
-          <Link href='/company/edit' className='flex justify-center items-center w-72 h-12 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
+          {/* <p className='mt-4'>{company}</p> */}
+          <p className='text-[#9EA0A5] w-[700px] text-justify mt-4'>{description}</p>
+          <Link href='/company/edit' className='flex justify-center items-center w-72 h-12 mt-8 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
           >Edit</Link>
           <div className='mt-12'>
             { (linkedin != null) && 

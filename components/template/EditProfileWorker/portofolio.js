@@ -9,26 +9,35 @@ import Swal from 'sweetalert2'
 const Portofolio = () => {
 
   const [radio, setRadio] = useState('web')
-  const [imagePortofolio, setImagePortfolio] = useState()
+  const [imageUrl, setImageUrl] = useState()
   const [showImage, setShowImage] = useState()
 
-  const changeImage = (e) => {
+  const changeImage = async (e) => {
     const file = e.target.files[0]
     setShowImage(URL.createObjectURL(file))
-		setImagePortfolio(file)
+		// setImagePortfolio(file)
+    const formData = new FormData()
+    formData.append('file', file)
+    const res = await axios.post('/v1/upload', formData, { withCredentials: true })
+    const url = res.data.data.file_url
+    console.log(url)
+    setImageUrl(url)
   }
 
-  async function submitPortofolio (e) {
-    e.preventDefault()
+  async function submitPortofolio(e) {
+    e.preventDefault()    
     const type = (radio === 'web') ? 'Aplikasi Web' : 'Aplikasi Mobile'
-    const formData = new FormData()
-    formData.append('application_name', document.querySelector('#application_name').value)
-    formData.append('link_repository', document.querySelector('#link_repository').value)
-    formData.append('application', type)
-    formData.append('image', imagePortofolio)
+    const data = {
+      application_name: document.querySelector('#application_name').value,
+      link_repository: document.querySelector('#link_repository').value,
+      application: type,
+      image: imageUrl
+    }
 
     try {
-      await axios.post('/v1/portfolio', formData, { withCredentials: true })
+      console.log('sebelum axios post')
+      await axios.post('/v1/portfolio', data, { withCredentials: true })
+      console.log('setelah axios post')
       Swal.fire({
         icon: 'success',
         title: 'Berhasil Menambahkan Portofolio'

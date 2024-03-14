@@ -3,6 +3,7 @@ import Link from 'next/link'
 // import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import { getProfile } from '@/service/worker'
+import Tabs from '@/components/module/Tabs'
 
 const Profile = async () => {  
   const worker = await getProfile()
@@ -43,7 +44,7 @@ const Profile = async () => {
           </Link>
           <h4 className='mt-6 text-2xl'>{worker.name}</h4>
           <p className='mb-2 text-sm'>{worker.job_desk}</p>
-          <p className='mb-2 text-[#9EA0A5] flex gap-2'>
+          <div className='mb-2 text-[#9EA0A5] flex gap-2'>
             <Image
               src='\icons\locate.svg'
               alt='locate'
@@ -51,7 +52,7 @@ const Profile = async () => {
               height={15}
             />
             <p className='text-sm'>{worker.domicile}</p> 
-          </p>
+          </div>
           <p className='mb-2 text-[#9EA0A5] text-sm'>{worker.workplace}</p>
           <p className='w-[700px] text-[#9EA0A5] text-sm my-6'>
             {worker.description}
@@ -64,28 +65,9 @@ const Profile = async () => {
           <div className='flex flex-wrap w-80 mt-3 text-xs'>
             <Skill className='py-1'>PHP</Skill>
           </div>
+
+          <Tabs />
           
-          {/* <div className='mt-10'>            
-            <div className='flex gap-4 items-center my-6'>
-              <Image src='/icons/mail.svg' alt='mail' width={22} height={22} />
-              <p className='text-[#9EA0A5] text-sm'>Louistommo@gmail.com</p>
-            </div>
-
-            <div className='flex gap-4 items-center my-6'>
-              <Image src='/icons/instagram.svg' alt='instagram' width={22} height={22} />
-              <p className='text-[#9EA0A5] text-sm'>@Louist91</p>
-            </div>
-
-            <div className='flex gap-4 items-center my-6'>
-              <Image src='/icons/github.svg' alt='github' width={22} height={22} />
-              <p className='text-[#9EA0A5] text-sm'>@Louistommo</p>
-            </div>
-
-            <div className='flex gap-4 items-center my-6'>
-              <Image src='/icons/gitlab.svg' alt='gitlab' width={22} height={22} />
-              <p className='text-[#9EA0A5] text-sm'>@Louistommo91</p>
-            </div>
-          </div> */}
         </div>
         <div style={{ height: '4rem' }}></div>
       </main>

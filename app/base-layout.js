@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 // import NavAfterLogin from '@/components/module/Navbar/navAfterLogin';
 // import { useEffect, useState } from 'react';
 
-const BaseLayout = ({token, children}) => {
+const BaseLayout = ({ children }) => {
   const pathname = usePathname()
   const hide = pathname.includes('register') || pathname.includes('login')
   // const [navRender, setNavRender] = useState()

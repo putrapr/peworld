@@ -28,7 +28,7 @@ const NavAfterLogin = () => {
       router.push(`/login/${role}`)
     } catch (err) {
       Swal.fire({
-        icon: "success",
+        icon: "error",
         title: "Gagal Logout",
       })
     }    

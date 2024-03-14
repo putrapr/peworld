@@ -2,11 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 // import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
-import { getProfile } from '@/service/worker'
+import { getProfile, getSkills } from '@/service/worker'
 import Tabs from '@/components/template/ProfileWorker/TabsProfile'
 
 const Profile = async () => {  
   const worker = await getProfile()
+  const skills = await getSkills()
   // const worker = {
   //   name: 'a',
   //   job_desk: 'b',
@@ -62,8 +63,13 @@ const Profile = async () => {
           {/* <Button onClick={() => router.push('/profile/edit')} className='w-72 h-12 text-sm'>Edit</Button> */}
           {/* <Button className='w-72 h-12 text-sm'>Edit</Button> */}
           <h4 className='font-bold text-xl mt-10'>Skill</h4>
-          <div className='flex flex-wrap w-80 mt-3 text-xs'>
-            <Skill className='py-1'>PHP</Skill>
+          <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>
+            {/* <Skill className='py-1'>PHP</Skill> */}
+            { 
+              skills.map((item, index) => (
+                <Skill key={index} className='py-1'>{item.skill_name}</Skill>
+              ))
+            }
           </div>
 
           <Tabs />

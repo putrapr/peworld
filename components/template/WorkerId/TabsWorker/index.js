@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 
-const Tabs = () => {
+const Tabs = ({ id }) => {
+  console.log(id)
   const [tab, setTab] = useState(false)
   const borderTab = 'border-b-4 border-[#5E50A1]'
   const [portofolio, setPortofolio] = useState([])
 
   const getPortofolio = async () => {
-    const res = await axios.get('/v1/portfolio', { withCredentials: true })
+    const res = await axios.get('/v1/portfolio/'+id)
+    console.log(res.data)
     setPortofolio(res.data.data)
   }
 

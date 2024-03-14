@@ -11,6 +11,7 @@ import Tabs from '@/components/template/WorkerId/TabsWorker'
 
 const WorkerId = ({params: {id}}) => {
   const [worker, setWorker] = useState({})
+  const [skills, setSkills] = useState([])
   
   const getWorker = async () => {
     const env = process.env.NEXT_PUBLIC_URL_BE
@@ -18,8 +19,22 @@ const WorkerId = ({params: {id}}) => {
     setWorker(result.data.data)
   }
 
+  const getSkills = async () => {
+    try {
+      const res = await axios.get('/v1/skills/'+id)
+      setSkills(res.data.data)
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        text: "Gagal mendapatkan skill",
+      }) 
+    }
+  }
+
+
   useEffect(() => {
     getWorker()
+    getSkills()
   },[])
   
   return (
@@ -59,8 +74,15 @@ const WorkerId = ({params: {id}}) => {
               // ))
             }
           {/* </div> */}
+          <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>
+            { 
+              skills.map((item, index) => (
+                <Skill key={index} className='py-1'>{item.skill_name}</Skill>
+              ))
+            }
+          </div>
           
-          <Tabs />
+          <Tabs id={id} />
         </div>
         <div style={{ height: '4rem' }}></div>
       </main>

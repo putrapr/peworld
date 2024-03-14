@@ -21,15 +21,22 @@ const Page = () => {
 
   // Functions
   const getProfile = async () => {
-    const res = await axios.get('/v1/workers/profile', { withCredentials: true })
-    const result = res.data.data
-    setWorker(result)
-    setProfile({
-      name: result.name,
-      job_desk: result.job_desk,
-      domicile: result.domicile,
-      workplace: result.workplace
-    })
+    try {
+      const res = await axios.get('/v1/workers/profile', { withCredentials: true })
+      const result = res.data.data
+      setWorker(result)
+      setProfile({
+        name: result.name,
+        job_desk: result.job_desk,
+        domicile: result.domicile,
+        workplace: result.workplace
+      })
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        text: "Gagal mendapatkan profil",
+      }) 
+    }
   }
 
   const updateProfile = async () => {
@@ -49,11 +56,66 @@ const Page = () => {
   }
 
   const getSkills = async () => {
-    const res = await axios.get('/v1/skills')
-    setSkills(res.data.data)
+    try {
+      const res = await axios.get('/v1/skills')
+      setSkills(res.data.data)
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        text: "Gagal mendapatkan skill",
+      }) 
+    }
   }
 
+  const addSkill = async (e) => {
+    e.preventDefault()
+    try {
+      const data = { skill_name: e.target.skill.value }
+      await axios.post('/v1/skills', data, { withCredentials: true })
+      setSkill('')
+      getSkills()
+    } catch (err) { 
+      Swal.fire({
+        icon: "error",
+        text: "Gagal menambahkan skill",
+      }) 
+    }
+  }
+
+  const handleDeleteSkill = async (id, name) => {
+    Swal.fire({
+      title: "Apa kamu yakin?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, hapus skill",
+      cancelButtonText: "Tidak"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteSkill(id, name)
+        getSkills()
+      }
+    })
+  }
+
+  const deleteSkill = async (id, name) => {
+    try {
+      await axios.delete('/v1/skills/'+id, { withCredentials: true })
+      Swal.fire({
+        icon: "success",
+        title: name,
+        text: `Berhasil dihapus`
+      })
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        text: "Gagal hapus skill",
+      }) 
+    }
+  }
   
+
   // Hook
   useEffect(()=> {
     getProfile()
@@ -153,15 +215,15 @@ const Page = () => {
               <h4 className='text-xl pl-8 pt-8'>Skill</h4>
               <hr className='mt-4 bg-[#C4C4C4]' />
               <div className='p-8'>
-                <div className="flex gap-6">
-                  <input type="text" className='text-sm w-full h-[50px] border p-3' placeholder="Java"/>
-                  <Button bgColor='yellow' className='w-20 h-[50px] text-xs'>Simpan</Button>
-                </div>
+                <form onSubmit={addSkill} className='flex gap-6'>
+                  <input type='text' name='skill' value={skill} onChange={(e) => setSkill(e.target.value)} className='text-sm w-full h-[50px] border p-3 focus:outline-[#5E50A1]' placeholder="Java"/>
+                  <Button type='submit' bgColor='yellow' className='w-20 h-[50px] text-xs'>Tambah</Button>
+                </form>
                 <div className='flex gap-2 mt-3'>
                   { 
                     skills.map((item, index) => (
                       <Skill key={index} className='group flex items-center'
-                      >{item.skill_name} <button className='hidden group-hover:inline -mr-3 ms-1'
+                      >{item.skill_name} <button onClick={() => handleDeleteSkill(item.id, item.skill_name)} className='hidden group-hover:inline -mr-3 ms-1'
                         ><Image
                             src='/icons/delete.svg'
                             alt='delete'
@@ -184,11 +246,11 @@ const Page = () => {
                 <Input label='Posisi' placeholder='Web Developer' />
                 <div className="flex gap-4 w-full">
                   <Input label='Nama Perusahaan' placeholder='PT Harus bisa' className='w-1/2'/>
-                  <Input label='Bulan/tahun' placeholder='Januari 2018' className='w-1/2'/>
+                  <Input label='Bulan/tahun - bulan/tahun' placeholder='Januari 2018 - Agustus 2019' className='w-1/2'/>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="deskripsi-pekerjaan" className='text-[#9EA0A5] text-xs ms-2'>Deskripsi singkat</label>
-                  <textarea className="w-full text-sm border p-3 rounded mt-1" id="deskripsi-pekerjaan" rows="5" placeholder='Deskripsikan pekerjaan anda'></textarea>
+                  <textarea className="w-full text-sm border p-3 rounded mt-1 focus:outline-[#5E50A1]" id="deskripsi-pekerjaan" rows="5" placeholder='Deskripsikan pekerjaan anda'></textarea>
                 </div>
                 <hr className='my-8 bg-[#C4C4C4]'/>
                 <ButtonOutline borderColor='yellow' className='w-full h-12'>Tambah Pengalaman Kerja</ButtonOutline>

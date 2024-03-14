@@ -3,7 +3,7 @@ import Link from 'next/link'
 // import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import { getProfile } from '@/service/worker'
-import Tabs from '@/components/module/Tabs'
+import Tabs from '@/components/template/ProfileWorker/TabsProfile'
 
 const Profile = async () => {  
   const worker = await getProfile()

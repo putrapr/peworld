@@ -6,7 +6,6 @@ import Card from '@/components/module/Card'
 // import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import axios from 'axios'
-// import Tabs from '@/components/module/Tabs'
 import Tabs from '@/components/template/WorkerId/TabsWorker'
 
 const WorkerId = ({params: {id}}) => {

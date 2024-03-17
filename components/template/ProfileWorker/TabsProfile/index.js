@@ -3,24 +3,25 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import ButtonDelete from '@/components/base/ButtonDelete'
 
 const Tabs = () => {
   const [tab, setTab] = useState(false)
   const borderTab = 'border-b-4 border-[#5E50A1]'
   const [portofolio, setPortofolio] = useState([])
-  // const [experience, setExperience] = useState([])
+  const [experience, setExperience] = useState([])
 
   const getPortofolio = async () => {
     const res = await axios.get('/v1/portfolio', { withCredentials: true })
     setPortofolio(res.data.data)
   }
 
-  // const getExperience = async () => {
-  //   const res = await axios.get('/v1/portfolio', { withCredentials: true })
-  //   setExperience(res.data.data)
-  // }
+  const getExperience = async () => {
+    const res = await axios.get('/v1/experience', { withCredentials: true })
+    setExperience(res.data.data)
+  }
 
-  const handleDelete = async (e) => {
+  const deletePortofolio = async (e) => {
     const result = confirm("Are you sure to delete?");
     if (!result) return
     
@@ -28,19 +29,39 @@ const Tabs = () => {
       await axios.delete('/v1/portfolio/'+e.target.id)
       Swal.fire({
         icon: 'success',
-        title: 'Portofolio terhapus'
+        title: 'Portofolio berhasil dihapus'
       })
       getPortofolio()
     } catch (err) {
       Swal.fire({
         icon: 'error',
-        title: 'Gagal hapus portofolio'
+        title: 'Gagal menghapus portofolio'
+      })
+    }
+  }
+
+  const deleteExperience = async (e) => {
+    const result = confirm("Are you sure to delete?");
+    if (!result) return
+    
+    try {
+      await axios.delete('/v1/experience/'+e.target.id)
+      Swal.fire({
+        icon: 'success',
+        title: 'Pengalaman kerja berhasil dihapus'
+      })
+      getExperience()
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal menghapus pengalaman kerja'
       })
     }
   }
 
   useEffect(() => {
     getPortofolio()
+    getExperience()
   },[])
 
   return (
@@ -68,7 +89,7 @@ const Tabs = () => {
                 className='w-full h-auto object-cover rounded-md border-2'
               />
               <p className='text-center mt-2'>{item.application_name}</p>
-              <button type="button" id={item.id} onClick={e => handleDelete(e)} className="absolute -top-2 -right-4 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 shadow-lg shadow-red-500/50 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Delete</button>
+              <ButtonDelete id={item.id} onClick={e => deletePortofolio(e)} className={'absolute -top-2 -right-4'} />
             </div>
           ))
         }
@@ -76,24 +97,23 @@ const Tabs = () => {
 
       {/* Pengalaman Kerja */}
       <div className={`${(tab)? 'flex flex-col':'hidden'}`}>
-        <div className='flex gap-8 pt-8'>
-          <div className='w-[10%]'>
-            <Image 
-              src='/img/worker/tokped.svg'
-              alt='tokped'
-              width={75}
-              height={75}
-              className='w-full h-auto object-cover'
-            />
-          </div>
-          <div className='flex flex-col'>
-            <h2 className='text-xl font-bold'>Engineer</h2>
-            <h2 className='text-lg'>Tokopedia</h2>
-            <h3 className='text-[#9EA0A5]'>July 2019 - January 2020 <span>6 month</span></h3>
-            <p className='text-sm mt-4 text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-            <hr className='my-4'/>
-          </div>
-        </div>
+        {
+          experience?.map((item, index) => (
+            <div key={index}>
+              <div className='flex gap-8 pt-8'>
+                <div className='flex flex-col w-full'>
+                  <h2 className='text-xl font-bold'>{item.position}</h2>
+                  <h2 className='text-lg'>{item.company}</h2>
+                  <h3 className='text-[#9EA0A5]'>{item.work_month} {item.work_year}</h3>
+                  <p className='text-sm mt-4 text-justify'>{item.created_at}</p>                  
+                </div>
+                <div><ButtonDelete id={item.id} onClick={e => deleteExperience(e)} /></div>
+              </div>
+              <hr className='my-4'/>            
+            </div>
+          ))
+        }
+        
       </div>
     </div>
   )

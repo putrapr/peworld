@@ -8,7 +8,8 @@ import axios from 'axios'
 import Skill from '@/components/base/Skill'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
-import Portofolio from '@/components/template/EditProfileWorker/portofolio'
+import Portfolio from '@/components/template/EditProfileWorker/portfolio'
+import Experience from '@/components/template/EditProfileWorker/experience'
 
 const Page = () => {
   // States / Variables
@@ -238,27 +239,8 @@ const Page = () => {
               </div>
             </div>
 
-            {/* Pengalaman kerja */}
-            <div className='bg-white mt-6 rounded-lg'>
-              <h4 className='text-xl pl-8 pt-8'>Pengalaman kerja</h4>
-              <hr className='mt-4 bg-[#C4C4C4]' />
-              <div className='px-8 py-7'>
-                <Input label='Posisi' placeholder='Web Developer' />
-                <div className="flex gap-4 w-full">
-                  <Input label='Nama Perusahaan' placeholder='PT Harus bisa' className='w-1/2'/>
-                  <Input label='Bulan/tahun - bulan/tahun' placeholder='Januari 2018 - Agustus 2019' className='w-1/2'/>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="deskripsi-pekerjaan" className='text-[#9EA0A5] text-xs ms-2'>Deskripsi singkat</label>
-                  <textarea className="w-full text-sm border p-3 rounded mt-1 focus:outline-[#5E50A1]" id="deskripsi-pekerjaan" rows="5" placeholder='Deskripsikan pekerjaan anda'></textarea>
-                </div>
-                <hr className='my-8 bg-[#C4C4C4]'/>
-                <ButtonOutline borderColor='yellow' className='w-full h-12'>Tambah Pengalaman Kerja</ButtonOutline>
-                {/* <button className='btn bg-white fw-bold' style={{color: '#FBB017', width: '100%', height:50, border: '1px solid #FBB017' }}>Tambah pengalaman kerja</button> */}
-              </div>
-            </div>
-
-            <Portofolio />
+            <Experience />
+            <Portfolio />
           </div>
         </div>        
       </main>

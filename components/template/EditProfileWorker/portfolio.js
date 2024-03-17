@@ -1,13 +1,14 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Input from '@/components/base/Input'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation'
 
 const Portofolio = () => {
-
+  const router = useRouter()
   const [radio, setRadio] = useState('web')
   const [imageUrl, setImageUrl] = useState()
   const [showImage, setShowImage] = useState()
@@ -15,33 +16,33 @@ const Portofolio = () => {
   const changeImage = async (e) => {
     const file = e.target.files[0]
     setShowImage(URL.createObjectURL(file))
-		// setImagePortfolio(file)
     const formData = new FormData()
     formData.append('file', file)
     const res = await axios.post('/v1/upload', formData, { withCredentials: true })
     const url = res.data.data.file_url
-    console.log(url)
     setImageUrl(url)
   }
 
   async function submitPortofolio(e) {
     e.preventDefault()    
     const type = (radio === 'web') ? 'Aplikasi Web' : 'Aplikasi Mobile'
+
     const data = {
       application_name: document.querySelector('#application_name').value,
       link_repository: document.querySelector('#link_repository').value,
+      // application_name: e.target.application_name.value,
+      // link_repository: e.target.link_repository.value,
       application: type,
       image: imageUrl
     }
 
     try {
-      console.log('sebelum axios post')
       await axios.post('/v1/portfolio', data, { withCredentials: true })
-      console.log('setelah axios post')
       Swal.fire({
         icon: 'success',
         title: 'Berhasil Menambahkan Portofolio'
       })
+      router.push('/profile') 
     } catch(err) {
       Swal.fire({
         icon: 'error',

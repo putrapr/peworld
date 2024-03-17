@@ -2,15 +2,41 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Tabs = () => {
   const [tab, setTab] = useState(false)
   const borderTab = 'border-b-4 border-[#5E50A1]'
   const [portofolio, setPortofolio] = useState([])
+  // const [experience, setExperience] = useState([])
 
   const getPortofolio = async () => {
     const res = await axios.get('/v1/portfolio', { withCredentials: true })
     setPortofolio(res.data.data)
+  }
+
+  // const getExperience = async () => {
+  //   const res = await axios.get('/v1/portfolio', { withCredentials: true })
+  //   setExperience(res.data.data)
+  // }
+
+  const handleDelete = async (e) => {
+    const result = confirm("Are you sure to delete?");
+    if (!result) return
+    
+    try {
+      await axios.delete('/v1/portfolio/'+e.target.id)
+      Swal.fire({
+        icon: 'success',
+        title: 'Portofolio terhapus'
+      })
+      getPortofolio()
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal hapus portofolio'
+      })
+    }
   }
 
   useEffect(() => {
@@ -32,16 +58,17 @@ const Tabs = () => {
       <div className={`${(!tab)? 'grid':'hidden'} grid-cols-4 gap-4 pt-8`}>
         { 
           portofolio?.map((item, index) => (
-            <div key={index}>
+            <div key={index} className='relative'>
               <Image 
-                src='/img/worker/blanja.png'
-                // src={item.image != null ? item.image : '/img/worker/blanja.png'}
+                // src='https://res.cloudinary.com/dnsqhf9cr/image/upload/v1710660215/wafpnxfhaqguey1upsra.png'
+                src={item.image != null ? item.image : '/img/worker/default.jpg'}
                 alt='1'
                 width={200}
                 height={200}
                 className='w-full h-auto object-cover rounded-md border-2'
               />
               <p className='text-center mt-2'>{item.application_name}</p>
+              <button type="button" id={item.id} onClick={e => handleDelete(e)} className="absolute -top-2 -right-4 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 shadow-lg shadow-red-500/50 font-medium rounded-lg text-sm px-2 py-1 text-center me-2 mb-2">Delete</button>
             </div>
           ))
         }

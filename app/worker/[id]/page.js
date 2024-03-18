@@ -8,8 +8,10 @@ import Skill from '@/components/base/Skill'
 import axios from 'axios'
 import Tabs from '@/components/template/WorkerId/TabsWorker'
 import { jwtDecode } from 'jwt-decode'
+import { useRouter } from 'next/navigation'
 
 const WorkerId = ({ params: {id} }) => {
+  const router = useRouter()
   const [worker, setWorker] = useState({})
   const [skills, setSkills] = useState([])
   const [role, setRole] = useState('')
@@ -71,11 +73,11 @@ const WorkerId = ({ params: {id} }) => {
           <p className='max-sm:w-full max-sm:text-justify w-[700px] text-[#9EA0A5] text-sm my-6'>
             {worker.description}
           </p>
-          {/* <Button className='w-72 h-12 text-sm'>Hire</Button> */}
           {( role == 'recruiter' && 
-            <Button className='w-72 h-12 text-sm'>Hire</Button>
+            <Button onClick={() => router.push('/hire/'+id)} className='w-72 h-12 text-sm'>Hire</Button>
           )}
           
+          <h4 className='font-bold text-xl mt-10'>Skill</h4>
           <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>
             { 
               skills.map((item, index) => (

@@ -60,11 +60,8 @@ const Profile = async () => {
           </p>
           <Link href='/profile/edit' className='flex justify-center items-center w-72 h-12 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
           >Edit</Link>
-          {/* <Button onClick={() => router.push('/profile/edit')} className='w-72 h-12 text-sm'>Edit</Button> */}
-          {/* <Button className='w-72 h-12 text-sm'>Edit</Button> */}
           <h4 className='font-bold text-xl mt-10'>Skill</h4>
           <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>
-            {/* <Skill className='py-1'>PHP</Skill> */}
             { 
               skills.map((item, index) => (
                 <Skill key={index} className='py-1'>{item.skill_name}</Skill>
@@ -72,8 +69,7 @@ const Profile = async () => {
             }
           </div>
 
-          <Tabs />
-          
+          <Tabs />          
         </div>
         <div style={{ height: '4rem' }}></div>
       </main>

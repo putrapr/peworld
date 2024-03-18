@@ -1,16 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import Card from '@/components/module/Card'
-// import Button from '@/components/base/Button'
+// import Link from 'next/link'
+// import Card from '@/components/module/Card'
+import Button from '@/components/base/Button'
 import Skill from '@/components/base/Skill'
 import axios from 'axios'
 import Tabs from '@/components/template/WorkerId/TabsWorker'
+import { jwtDecode } from 'jwt-decode'
 
-const WorkerId = ({params: {id}}) => {
+const WorkerId = ({ params: {id} }) => {
   const [worker, setWorker] = useState({})
   const [skills, setSkills] = useState([])
+  const [role, setRole] = useState('')
   
   const getWorker = async () => {
     const env = process.env.NEXT_PUBLIC_URL_BE
@@ -30,10 +32,17 @@ const WorkerId = ({params: {id}}) => {
     }
   }
 
+  const getRole = () => {
+    const token = localStorage.getItem('token')
+    const decoded = jwtDecode(token)
+    setRole(decoded.role)
+  }
+
 
   useEffect(() => {
     getWorker()
     getSkills()
+    getRole()
   },[])
   
   return (
@@ -63,16 +72,10 @@ const WorkerId = ({params: {id}}) => {
             {worker.description}
           </p>
           {/* <Button className='w-72 h-12 text-sm'>Hire</Button> */}
-
-          {/* <h4 className='font-bold text-xl mt-10'>Skill</h4>
-          <div className='flex flex-wrap w-80 mt-3 text-xs'> */}
-            {/* <Skill className='py-1'>PHP</Skill> */}
-            {
-              // worker.map((item, index) => (              
-              //   <Card data={item} key={index}/>
-              // ))
-            }
-          {/* </div> */}
+          {( role == 'recruiter' && 
+            <Button className='w-72 h-12 text-sm'>Hire</Button>
+          )}
+          
           <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>
             { 
               skills.map((item, index) => (

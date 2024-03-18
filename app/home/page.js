@@ -5,6 +5,7 @@ import Card from '@/components/module/Card'
 import Button from '@/components/base/Button'
 import ButtonPage from '@/components/base/ButtonPagination'
 import axios from 'axios'
+import Link from 'next/link'
 
 function useDebounce(effect, dependencies, delay) {
   const callback = useCallback(effect, dependencies);
@@ -35,7 +36,7 @@ const Home = () => {
     const result = await axios.get('/v1/workers/', {params})
     setWorker(() => result.data.data)
     setPageData(() => result.data.pagination)
-    window.scrollTo({ top: 0 });
+    // window.scrollTo({ top: 0 });
   }
 
   const nextPage = () => {
@@ -70,7 +71,7 @@ const Home = () => {
       </div>
       
       <div className='w-full max-sm:px-4 px-[8.5rem] '>
-        <div className='relative z-50 bg-white w-full h-16 mt-14 shadow-ring rounded-lg'>
+        <div className='relative z-10 bg-white w-full h-16 mt-14 shadow-ring rounded-lg'>
           <div className='flex'>
             <div className="grid grid-cols-12 w-4/5">
               <input className='col-span-11 ms-6 border-0 h-16 focus:outline-none'
@@ -91,7 +92,7 @@ const Home = () => {
               </div>
             </div>
             <div className='max-sm:hidden border-l border-[#9EA0A5] my-2'></div>
-            <div className='relative w-1/4 z-[1000]'>
+            <div className='relative max-sm:w-1/2 w-1/4'>
               <div className='flex items-center h-full p-2'>
                 <button className="flex justify-center items-center w-1/2 h-full mr-2 rounded active:ring-2"
                   onClick={() => setToggleSort(!toggleSort)}> 
@@ -102,45 +103,44 @@ const Home = () => {
                     height={12}
                   /> <span className='ml-2 text-[#9EA0A5]'>Sortir</span>
                 </button>
-                {/* <select name="cars" id="cars" className='h-full'>
-                  <option value="volvo" className='p-5'>Volvo</option>
-                  <option value="saab" className='p-5'>Saab</option>
-                  <option value="mercedes" className='p-5'>Mercedes</option>
-                  <option value="audi" className='p-5'>Audi</option>
-                </select> */}
 
+                { toggleSort && 
+                  <div className='w-full absolute top-20 drop-shadow-md bg-white'>
+                    <ul>
+                      <li className='border-b'>
+                        <button className='w-full h-full p-3'
+                          onClick={() => handleSort('name','ASC')}
+                        >Nama: A - Z</button>
+                      </li>
+                      <li className='border-b'>
+                        <button className='w-full h-full p-3'
+                          onClick={() => handleSort('name','DESC')}
+                        >Nama: Z - A</button>
+                      </li>
+                      <li>
+                        <button className='w-full h-full p-3'
+                          onClick={() => handleSort('created_at','DESC')}
+                        >Default</button>
+                      </li>
+                    </ul>
+                  </div>
+                }             
                 <Button className='w-28 h-full font-thin'>Search</Button>
               </div>
-              { toggleSort && 
-              <div className='w-[300px] absolute z-[90000] top-20 drop-shadow-md bg-white'>
-                <ul>
-                  <li className='border-b'>
-                    <button className='w-full h-full p-3'
-                      onClick={() => handleSort('name','ASC')}
-                    >Nama: A - Z</button>
-                  </li>
-                  <li className='border-b'>
-                    <button className='w-full h-full p-3'
-                      onClick={() => handleSort('name','DESC')}
-                    >Nama: Z - A</button>
-                  </li>
-                  <li>
-                    <button className='w-full h-full p-3'
-                      onClick={() => handleSort('created_at','DESC')}
-                    >Default</button>
-                  </li>
-                </ul>
-              </div>
-              }             
             </div>       
           </div>
         </div>
 
-        <div className={`relative z-[1] bg-white w-full mt-16 shadow-ring rounded-lg`}> 
-        {/* ${toggleSort && 'mt-44'} */}
+        <div className={`relative bg-white w-full mt-16 shadow-ring rounded-lg`}> 
           {
-            worker.map((item, index) => (              
-              <Card data={item} key={index}/>
+            worker.map((item, index) => (
+              <div key={index}>
+                <Card data={item} className='max-sm:hidden'/>
+                <Link href={'/worker/'+item.id} className='sm:hidden'>
+                  <Card data={item} />                
+                </Link>
+              </div>
+              
             ))
           }
         </div>

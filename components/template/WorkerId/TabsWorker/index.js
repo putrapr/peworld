@@ -4,19 +4,24 @@ import Image from 'next/image'
 import axios from 'axios'
 
 const Tabs = ({ id }) => {
-  console.log(id)
   const [tab, setTab] = useState(false)
   const borderTab = 'border-b-4 border-[#5E50A1]'
   const [portofolio, setPortofolio] = useState([])
+  const [experience, setExperience] = useState([])
 
   const getPortofolio = async () => {
     const res = await axios.get('/v1/portfolio/'+id)
-    console.log(res.data)
     setPortofolio(res.data.data)
+  }
+
+  const getExperience = async () => {
+    const res = await axios.get('/v1/experience/'+id)
+    setExperience(res.data.data)
   }
 
   useEffect(() => {
     getPortofolio()
+    getExperience()
   },[])
 
   return (
@@ -36,8 +41,8 @@ const Tabs = ({ id }) => {
           portofolio?.map((item, index) => (
             <div key={index}>
               <Image 
-                src='/img/worker/blanja.png'
-                // src={item.image != null ? item.image : '/img/worker/blanja.png'}
+                // src='/img/worker/default.jpg'
+                src={item.image != null ? item.image : '/img/worker/default.jpg'}
                 alt='1'
                 width={200}
                 height={200}
@@ -51,24 +56,19 @@ const Tabs = ({ id }) => {
 
       {/* Pengalaman Kerja */}
       <div className={`${(tab)? 'flex flex-col':'hidden'}`}>
-        <div className='flex gap-8 pt-8'>
-          <div className='w-[10%]'>
-            <Image 
-              src='/img/worker/tokped.svg'
-              alt='tokped'
-              width={75}
-              height={75}
-              className='w-full h-auto object-cover'
-            />
-          </div>
-          <div className='flex flex-col'>
-            <h2 className='text-xl font-bold'>Engineer</h2>
-            <h2 className='text-lg'>Tokopedia</h2>
-            <h3 className='text-[#9EA0A5]'>July 2019 - January 2020 <span>6 month</span></h3>
-            <p className='text-sm mt-4 text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-            <hr className='my-4'/>
-          </div>
-        </div>
+        {
+          experience?.map((item, index) => (
+            <div className='flex gap-8 pt-8' key={index}>
+              <div className='flex flex-col w-full'>
+                <h2 className='text-xl font-bold'>{item.position}</h2>
+                <h2 className='text-lg'>{item.company}</h2>
+                <h3 className='text-[#9EA0A5]'>{item.work_month} {item.work_year}</h3>
+                <p className='text-sm mt-4 text-justify'>{item.created_at}</p>                  
+                <hr className='my-4'/>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   )

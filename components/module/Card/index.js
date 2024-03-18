@@ -4,17 +4,17 @@ import Image from 'next/image'
 import Skill from '@/components/base/Skill'
 import Button from '@/components/base/Button'
 
-const Card = ({ data }) => {
+const Card = ({ data, className }) => {
   const router = useRouter()
   const { id, photo, name, job_desk, domicile, skills } = data
 
   return (
-    <div>
+    <div className={className}>
       <div className='flex justify-between'>
         <div className='flex justify-between max-sm:p-4 p-6 '>
           <div className='flex items-center max-sm:ms-0 ms-6'>
             <Image
-              src={ (photo != 'default.jpg') ? "/img/default.png" : photo }
+              src={ (photo == null) ? "/img/default.png" : photo }
               alt="dp"
               width={100}
               height={100}
@@ -35,7 +35,7 @@ const Card = ({ data }) => {
               }
               <p>{domicile}</p>              
             </p>
-            <div className='flex gap-2 mt-3'>
+            <div className='flex flex-wrap gap-2 mt-3'>
               { 
                 skills.map((item, index) => (
                   <Skill key={index}>{item}</Skill>

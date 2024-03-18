@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ButtonOutline from '@/components/base/ButtonOutline'
 import Button from '@/components/base/Button'
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
@@ -33,10 +33,6 @@ const NavAfterLogin = () => {
       })
     }    
   }
-
-  const profile = () => (
-    (getRole() === 'worker') ? 'profile' : 'company'
-  )
 
   return (
     <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 max-sm:px-4 px-[8.5rem] drop-shadow-md'>

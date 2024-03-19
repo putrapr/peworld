@@ -52,9 +52,9 @@ const RegisterRecruiter = () => {
   }
 
   return (
-    <div className='flex py-6 px-12 gap-16'>
+    <div className='flex py-6 max-sm:px-6 px-12 gap-16'>
       {/* Left Side */}
-      <div className='relative w-1/2'>
+      <div className='max-sm:hidden relative w-1/2'>
         <Image 
           src="/img/login/poster.webp" 
           alt="poster" 
@@ -66,7 +66,7 @@ const RegisterRecruiter = () => {
       </div>
 
       {/* Right Side */}
-      <div className='w-2/5 mb-10'>
+      <div className='max-sm:w-full w-2/5 mb-10'>
         <form onSubmit={handleSubmit}>
           <h2 className='text-3xl font-bold mt-16'>Halo, Pewpeople</h2>
           <p className='text-lg mt-4'>Isi data di bawah ini untuk registrasi akunmu</p>

@@ -18,7 +18,7 @@ const Profile = async () => {
 
   return (
     <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>
-      <main className=' rounded-lg border bg-white'>        
+      <main className='rounded-lg border bg-white'>        
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
           {/* <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
             <Image

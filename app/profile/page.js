@@ -17,10 +17,10 @@ const Profile = async () => {
   // }
 
   return (
-    <div className='bg-[#F6F7F8] px-[8.5rem] py-16'>
+    <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>
       <main className=' rounded-lg border bg-white'>        
         <div className='h-48 bg-[#5E50A1] flex justify-end items-end rounded-t-lg'>
-          <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
+          {/* <button type="button" className='text-white text-xl mb-4 mr-6 flex items-center gap-2'>
             <Image
               src='/icons/pencil-white.svg'
               alt='pencil-white'
@@ -28,19 +28,18 @@ const Profile = async () => {
               height={15}
             />
             <p>Ubah Latar</p>
-          </button>        
+          </button>         */}
         </div>
         
         {/* Content */}
-        <div className='mx-[4.5rem] -mt-20'>
+        <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
           <Link href='/profile/edit'>
             <Image 
-              // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
-              src= "/img/default.png"
+              src= { (worker.photo == null) ? "/img/default.png" : worker.photo }
               alt="dp" 
               width={150} 
               height={150} 
-              className="rounded-circle"
+              className="max-sm:w-32 max-sm:h-32 rounded-full"
             />
           </Link>
           <h4 className='mt-6 text-2xl'>{worker.name}</h4>
@@ -55,10 +54,10 @@ const Profile = async () => {
             <p className='text-sm'>{worker.domicile}</p> 
           </div>
           <p className='mb-2 text-[#9EA0A5] text-sm'>{worker.workplace}</p>
-          <p className='w-[700px] text-[#9EA0A5] text-sm my-6'>
+          <p className='max-sm:w-full max-sm:text-justify w-[700px] text-[#9EA0A5] text-sm my-6'>
             {worker.description}
           </p>
-          <Link href='/profile/edit' className='flex justify-center items-center w-72 h-12 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
+          <Link href='/profile/edit' className='flex justify-center items-center max-sm:w-52 w-72 h-12 text-sm bg-[#5E50A1] hover:bg-[#53478c] rounded text-white font-semibold tracking-wider active:ring-2'
           >Edit</Link>
           <h4 className='font-bold text-xl mt-10'>Skill</h4>
           <div className='flex flex-wrap gap-2 w-80 mt-3 text-xs'>

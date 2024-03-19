@@ -12,14 +12,16 @@ const Card = ({ data, className }) => {
     <div className={className}>
       <div className='flex justify-between'>
         <div className='flex justify-between max-sm:p-4 p-6 '>
-          <div className='flex items-center max-sm:ms-0 ms-6'>
-            <Image
-              src={ (photo == null) ? "/img/default.png" : photo }
-              alt="dp"
-              width={100}
-              height={100}
-              className="rounded-full"
-            />
+          <div className='max-sm:ms-0 ms-6'>
+            <div className='w-[100px] flex'>
+              <Image
+                src={ (photo == null) ? "/img/default.png" : photo }
+                alt="dp"
+                width={100}
+                height={100}
+                className="w-full rounded-full"
+              />
+            </div>
           </div>
           <div className='ms-6'>
             <h4 className='text-2xl'>{name}</h4>
@@ -35,7 +37,7 @@ const Card = ({ data, className }) => {
               }
               <p>{domicile}</p>              
             </p>
-            <div className='flex flex-wrap gap-2 mt-3'>
+            <div className='flex flex-wrap gap-2 mt-3 max-sm:mt-8'>
               { 
                 skills.map((item, index) => (
                   <Skill key={index}>{item}</Skill>

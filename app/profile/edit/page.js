@@ -115,6 +115,25 @@ const Page = () => {
       }) 
     }
   }
+
+  const changeImage = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('photo', file)
+    try {
+      await axios.put('/v1/workers/profile/photo', formData, { withCredentials: true })
+      Swal.fire({
+        icon: "success",
+        text: "Berhasil perbarui foto profil",
+      })
+      getProfile()
+    } catch(err) {
+      Swal.fire({
+        icon: "error",
+        text: "Gagal mengganti foto profil",
+      })
+    }
+  }
   
 
   // Hook
@@ -136,13 +155,14 @@ const Page = () => {
             <div className='bg-white p-8 rounded-lg'>
               <div className='flex flex-col items-center'>
                 <Image 
-                  src="/img/default.png"
+                  // src="/img/default.png"
+                  src={ (worker.photo == null) ? "/img/default.png" : worker.photo }
                   alt="dp"
                   width={150}
                   height={150}
-                  className="mb-3"
+                  className="mb-3 rounded-full"
                 />
-                <button type="button" className='text-[#9EA0A5] text-xl mb-4 flex gap-2 items-center'>
+                <label htmlFor='add-photo' className='text-[#9EA0A5] text-xl mb-4 flex gap-2 items-center cursor-pointer'>
                   <Image 
                     src='\icons\pencil-gray.svg'
                     alt='pencil-gray'
@@ -150,7 +170,8 @@ const Page = () => {
                     height={15}
                   />
                   <p>Edit</p>
-                </button>
+                </label>
+                <input type="file" id="add-photo" name="image" onChange={changeImage} hidden/>
               </div>
               <div>
                 <h4 className='text-xl mt-4 font-bold'>{profile.name}</h4>

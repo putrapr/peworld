@@ -40,7 +40,6 @@ const WorkerId = ({ params: {id} }) => {
     setRole(decoded.role)
   }
 
-
   useEffect(() => {
     getWorker()
     getSkills()
@@ -56,12 +55,11 @@ const WorkerId = ({ params: {id} }) => {
         {/* Content */}
         <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
           <Image 
-            // src={ (user.image != 'default.jpg') ? "/img/default.png" : 'user.image' }
-            src= "/img/default.png"
+            src= { (worker.photo == null) ? "/img/default.png" : worker.photo }
             alt="dp" 
             width={150} 
             height={150}
-            className="max-sm:w-32 max-sm:h-32 rounded-circle"
+            className="max-sm:w-32 max-sm:h-32 rounded-full"
           />
           <h4 className='mt-6 text-2xl'>{worker.name}</h4>
           <p className='mb-2 text-sm'>{worker.job_desk}</p>

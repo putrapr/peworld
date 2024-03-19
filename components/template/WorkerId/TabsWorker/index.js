@@ -36,7 +36,7 @@ const Tabs = ({ id }) => {
       </div>
 
       {/* Portofolio */}
-      <div className={`${(!tab)? 'grid':'hidden'} grid-cols-4 gap-4 pt-8`}>
+      <div className={`${(!tab)? 'grid':'hidden'} max-sm:grid-cols-1 grid-cols-4 gap-4 pt-8`}>
         { 
           portofolio?.map((item, index) => (
             <div key={index}>

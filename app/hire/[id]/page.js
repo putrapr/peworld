@@ -65,10 +65,10 @@ const Hire = ({ params: {id} }) => {
   return (
     <div className='bg-[#F6F7F8]'>
       {/* Main Content */}
-      <main className='relative mx-16 top-16 rounded-lg'>
-        <div className='flex justify-between'>
+      <main className='relative max-sm:mx-6 mx-16 top-16 rounded-lg'>
+        <div className='flex max-sm:flex-col max-sm:justify-start max-sm:gap-12 justify-between'>
           {/* Left Side */}
-          <div className='w-[450px] shadow-ring ms-24'>
+          <div className='max-sm:w-full w-[450px] shadow-ring max-sm:ms-0 ms-24'>
             {/* Card */}
             <div className='bg-white p-8 rounded-lg'>
               <div className='flex flex-col items-center'>
@@ -94,25 +94,28 @@ const Hire = ({ params: {id} }) => {
                 }
                 <p className='text-[#9EA0A5] mt-4'>{worker?.description}</p>
               </div>
-              <h4 className='text-2xl mt-8'>Skill</h4>
-                <div className='flex flex-wrap mt-4 gap-[.4rem_.7rem]'>
-                  {
-                    skills?.map((item, index) => (                      
-                      <Skill key={index}>{item.skill_name}</Skill>
-                    ))
-                  }
+              { skills.length != 0 && 
+                <div>
+                  <h4 className='text-2xl mt-8'>Skill</h4>
+                  <div className='flex flex-wrap mt-4 gap-[.4rem_.7rem]'>
+                    {
+                      skills?.map((item, index) => (                      
+                        <Skill key={index}>{item.skill_name}</Skill>
+                      ))
+                    }
+                  </div>
                 </div>
+              }
             </div>
           </div>
 
           {/* Right Side */}
-          <div className='w-[750px]'>
-            
+          <div className='max-sm:w-full w-[750px]'>            
             {/* Hubungi */}
-            <form onSubmit={addHire} className='rounded-lg px-8'>
+            <form onSubmit={addHire} className='rounded-lg max-sm:px-0 px-8'>
               <h2 className='text-4xl'>Hubungi {worker?.name}</h2>
               <p className='mt-4 text-2xl'>Isi formulir di bawah ini </p>
-              <div className='mt-16'>
+              <div className='max-sm:mt-6 mt-16'>
                 <Input name='purpose' label='Tujuan tentang pesan ini' placeholder='Proyek / Hire' />
                 <Input name='name' label='Nama lengkap' placeholder='Masukan nama lengkap' />
                 <Input name='email' label='Email' placeholder='Masukan email' />
@@ -127,7 +130,7 @@ const Hire = ({ params: {id} }) => {
           </div>
         </div>
       </main>    
-    <div className='h-60 mt-60'></div>
+    <div className='max-sm:h-24 max-sm:mt-24 h-60 mt-60'></div>
   </div>
   )
 }

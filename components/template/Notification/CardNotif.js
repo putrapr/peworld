@@ -31,10 +31,10 @@ const CardNotif = ({data, role}) => {
             </div>            
           </div>
           { toggle &&
-            <div id='content' className='ml-16'>
+            <div id='content' className='ml-16 pr-4'>
               <hr />
               <p className='font-semibold mt-2'>{name_request_hire} <span className='text-[#9EA0A5] ml-2 font-normal'> • {email_request_hire}</span></p>
-              <p>{desciption_request_hire}</p>
+              <p className='text-justify'>{desciption_request_hire}</p>
             </div>
           }         
         </div>
@@ -55,7 +55,7 @@ const CardNotif = ({data, role}) => {
             </div>            
           </div>
           { toggle &&
-            <div id='content' className='ml-16'>
+            <div id='content' className='ml-16 pr-4'>
               <hr />
               <div className='flex mt-2 gap-4'>
                 <div>
@@ -76,7 +76,7 @@ const CardNotif = ({data, role}) => {
               </div>
               <p className='text-sm mt-3 text-[#9EA0A5]'>{worker_job_desk}</p>
               <p className='text-sm mb-2 text-[#9EA0A5]'>{worker_workplace}</p>
-              <p className='mb-2'>{desciption_request_hire}</p>
+              <p className='mb-2 text-justify'>{desciption_request_hire}</p>
             </div>
           }         
         </div>

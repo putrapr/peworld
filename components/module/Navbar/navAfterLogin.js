@@ -36,14 +36,25 @@ const NavAfterLogin = () => {
 
   return (
     <nav className='relative bg-white flex items-center justify-between w-full h-[100px] top-0 max-sm:px-4 px-[8.5rem] drop-shadow-md'>
-      <Link href="/home">
-        <Image
-          src="/icons/logo-purple.svg"
-          alt="peworld logo"
-          width = {127}
-          height = {35}
-        />
-      </Link>
+      <div className='flex max-sm:gap-3 gap-12'>
+        <Link href="/home">
+          <Image
+            src="/icons/logo-purple.svg"
+            alt="peworld logo"
+            width = {127}
+            height = {35}
+          />
+        </Link>
+
+        <Link href="/notification" className='mt-2'>
+          <Image
+            src="/icons/bell.svg"
+            alt="peworld logo"
+            width = {25}
+            height = {25}
+          />
+        </Link>
+      </div>
 
       <div className='flex gap-4'>
         <ButtonOutline onClick={handleLogout} className='w-20 h-10 text-sm'>Logout</ButtonOutline>

@@ -72,7 +72,7 @@ const WorkerId = ({ params: {id} }) => {
             {worker.description}
           </p>
           {( role == 'recruiter' && 
-            <Button onClick={() => router.push('/hire/'+id)} className='w-72 h-12 text-sm'>Hire</Button>
+            <Button onClick={() => router.push('/hire/'+id)} className='max-sm:w-52 w-72 h-12 text-sm'>Hire</Button>
           )}
           
           <h4 className='font-bold text-xl mt-10'>Skill</h4>

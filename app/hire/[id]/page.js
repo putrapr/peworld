@@ -43,16 +43,13 @@ const Hire = ({ params: {id} }) => {
     }
     
     try {
-      console.log('sebelum axios')
       await axios.post('/v1/hire', data, { withCredentials: true })
       Swal.fire({
         icon: "success",
         title: "Berhasil mengirim pesan ke "+worker.name,
       })
-      console.log('setelah axios')
       router.push('/worker/'+id)
     } catch (err) {
-      console.log(err)
       Swal.fire({
         icon: "error",
         text: "Gagal mengirim pesan ke "+worker.name,

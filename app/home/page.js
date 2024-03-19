@@ -131,7 +131,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className={`relative bg-white w-full mt-16 shadow-ring rounded-lg`}> 
+        <div className='relative bg-white w-full mt-16 shadow-ring rounded-lg'> 
           {
             worker.map((item, index) => (
               <div key={index}>

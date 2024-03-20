@@ -63,6 +63,33 @@ npm run dev
 ```
 
 ## Screenshot
+#### Worker
+| Login Page | Register Page |
+|------------|---------------|
+|![Login Page](https://drive.google.com/uc?export=view&id=1gwlc-FYf-t3qw1ofFMjm03nEAF_TgKQ8) | ![Register Page](https://drive.google.com/uc?export=view&id=1OjTI4NmX_x50YSHDdhWUAIKpdIf8TRSj)|  
+
+| Landing Page | Home Page |
+|------------|---------------|
+|![Landing Page](https://drive.google.com/uc?export=view&id=1p9u_X8r5r37C0cACbLIBSAyuzb1sumUZ) | ![Home Page](https://drive.google.com/uc?export=view&id=13ePG5aF5Y6utzsmFos-F0c5WKd3xfUXG)|  
+
+| Profile Page | Edit Profile Page |
+|------------|---------------|
+|![Profile Page](https://drive.google.com/uc?export=view&id=1aqjNZC_rK0ecxSsUPqfSXFMtSo9vxanJ) | ![Edit Profile Page](https://drive.google.com/uc?export=view&id=1Q3-hAQjnl5jMyAcZr3Ds0FGaZTHpSjgn)|  
+
+
+
+#### Recruiter
+| Login Page | Register Page |
+|------------|---------------|
+|![Login Page](https://drive.google.com/uc?export=view&id=1XbOj-jurDMN-1lLjgJy45eGophlgwW4z) | ![Register Page](https://drive.google.com/uc?export=view&id=1_Z-dw9UHkZ6RdthmK2DD9PLNJgnczpYa)|  
+
+| Worker Page | Hire Page |
+|------------|---------------|
+|![Worker Page](https://drive.google.com/uc?export=view&id=1eOu463QjOEJgW4yJUcV2gruUGEcxM82_) | ![Hire Page](https://drive.google.com/uc?export=view&id=1kfID0x-fM5ZLc5jxARmI-3juiOkDAInp)|  
+
+| Profile Page | Edit Profile Page |
+|------------|---------------|
+|![Profile Page](https://drive.google.com/uc?export=view&id=1sjhjVJ2JDtFerUZ6aT-mZGrwPuaBfHBS) | ![Edit Profile Page](https://drive.google.com/uc?export=view&id=1Z2Lxt3K0Ug2-V7E1c6RJEYeIGjT5J-Pa)|  
 
 
 ## Demo

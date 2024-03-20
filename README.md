@@ -70,7 +70,7 @@ npm run dev
 
 | Landing Page | Home Page |
 |------------|---------------|
-|![Landing Page](https://drive.google.com/uc?export=view&id=1p9u_X8r5r37C0cACbLIBSAyuzb1sumUZ) | ![Home Page](https://drive.google.com/uc?export=view&id=13ePG5aF5Y6utzsmFos-F0c5WKd3xfUXG)|  
+|![Landing Page](https://drive.google.com/uc?export=view&id=1H9yfOnYcobI1y8ZkfRnOTbgdEScNLN9x) | ![Home Page](https://drive.google.com/uc?export=view&id=1OSReYVktmYl_upBylX671L93ZjVCPE84)|  
 
 | Profile Page | Edit Profile Page |
 |------------|---------------|

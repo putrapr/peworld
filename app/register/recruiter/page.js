@@ -30,7 +30,7 @@ const RegisterRecruiter = () => {
       password: pass
     }
 
-    axios.post('/v1/recruiters/register', data)
+    axios.post('/v1/recruiters/register', data, { withCredentials: true })
       .then((res) => {
         Swal.fire({
           icon: "success",

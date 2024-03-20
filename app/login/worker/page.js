@@ -17,7 +17,7 @@ const LoginWorker = () => {
       password: e.target.password.value
     }
     
-    axios.post('/v1/auth/login', data, {withCredentials: true})
+    axios.post('/v1/auth/login', data, { withCredentials: true })
       .then((res) => {
         const result = res.data.data
         if (result.role === 'worker') {

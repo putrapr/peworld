@@ -28,7 +28,7 @@ const RegisterWorker = () => {
       phone: e.target.phone.value,
     }
     
-    axios.post('/v1/workers/register', data)
+    axios.post('/v1/workers/register', data, { withCredentials: true })
       .then((res) => {
         Swal.fire({
           icon: "success",

@@ -20,7 +20,10 @@ const Company = async () => {
         </div>
         
         <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
-          <Image src="/img/default.png" alt="logo" width={150} height={150} className="max-sm:w-32 max-sm:h-32 rounded-full" />
+          <Image className="max-sm:w-32 max-sm:h-32 rounded-full"
+            src="/img/default.png" 
+            alt="logo" width={150} height={150} 
+          />
           <h4 className='mt-6 text-2xl'>{company}</h4>
           <p className='mt-1'>{position}</p>          
           { city && 

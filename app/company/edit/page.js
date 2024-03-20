@@ -72,6 +72,7 @@ const CompanyEdit = () => {
                   alt="dp"
                   width={150}
                   height={150}
+                  className='rounded-full'
                 />
                 <div className='mt-3 flex gap-2'>
                   <Image
@@ -147,7 +148,7 @@ const CompanyEdit = () => {
         </div>
       </main>
       
-      <div className='h-60'></div>
+      <div className='h-40'></div>
     </div>
   )
 }

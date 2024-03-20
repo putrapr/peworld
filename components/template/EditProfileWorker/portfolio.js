@@ -24,14 +24,11 @@ const Portofolio = () => {
   }
 
   async function submitPortofolio(e) {
-    e.preventDefault()    
+    e.preventDefault()
     const type = (radio === 'web') ? 'Aplikasi Web' : 'Aplikasi Mobile'
-
     const data = {
-      application_name: document.querySelector('#application_name').value,
-      link_repository: document.querySelector('#link_repository').value,
-      // application_name: e.target.application_name.value,
-      // link_repository: e.target.link_repository.value,
+      application_name: e.target.application_name.value,
+      link_repository: e.target.link_repository.value,
       application: type,
       image: imageUrl
     }
@@ -96,7 +93,7 @@ const Portofolio = () => {
             </label>
           </div>
 
-          { showImage && 
+          { imageUrl && 
             <div className='my-8'>
               <label className="text-[#9EA0A5] text-xs">Preview</label>
               <Image

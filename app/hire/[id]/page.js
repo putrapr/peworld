@@ -9,7 +9,6 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
 const Hire = ({ params: {id} }) => {
-  // const skill = ['Phyton', 'Laravel', 'Golang', 'Javascript', 'PHP', 'HTML', 'C++', 'Kotlin', 'Swift']
   const router = useRouter()
   const [worker, setWorker] = useState({})
   const [skills, setSkills] = useState([])
@@ -73,7 +72,7 @@ const Hire = ({ params: {id} }) => {
             <div className='bg-white p-8 rounded-lg'>
               <div className='flex flex-col items-center'>
                 <Image 
-                  src="/img/default.png"
+                  src={(worker.photo == null) ? '/img/default.png' : worker.photo}
                   alt="dp"
                   width={180}
                   height={180}
@@ -122,7 +121,7 @@ const Hire = ({ params: {id} }) => {
                 <Input name='phone' label='No handphone' placeholder='Masukan no handphone' />
                 <div className="mb-3">
                   <label for="deskripsi" className="text-[#9EA0A5] text-xs">Deskripsi</label>
-                  <textarea name='description' className="w-full text-sm p-4 focus:outline-[#5E50A1]" id="deskripsi" rows="7" placeholder='Deskripsikan / jelaskan lebih detail'></textarea>
+                  <textarea name='description' className="w-full text-sm p-4 border border-[#E2E5ED] rounded focus:outline-[#5E50A1]" id="deskripsi" rows="7" placeholder='Deskripsikan / jelaskan lebih detail'></textarea>
                 </div>
               </div>
               <Button bgColor='yellow' className='w-full h-12 mt-10'>Hire</Button>
@@ -130,7 +129,7 @@ const Hire = ({ params: {id} }) => {
           </div>
         </div>
       </main>    
-    <div className='max-sm:h-24 max-sm:mt-24 h-60 mt-60'></div>
+    <div className='max-sm:h-24 max-sm:mt-24 h-40 mt-40'></div>
   </div>
   )
 }

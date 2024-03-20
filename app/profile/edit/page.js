@@ -241,7 +241,7 @@ const Page = () => {
                   <input type='text' name='skill' value={skill} onChange={(e) => setSkill(e.target.value)} className='text-sm w-full h-[50px] border p-3 focus:outline-[#5E50A1]' placeholder="Java"/>
                   <Button type='submit' bgColor='yellow' className='w-20 h-[50px] text-xs'>Tambah</Button>
                 </form>
-                <div className='flex gap-2 mt-3'>
+                <div className='flex flex-wrap gap-2 mt-3'>
                   { 
                     skills.map((item, index) => (
                       <Skill key={index} className='group flex items-center'

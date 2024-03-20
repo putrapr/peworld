@@ -61,7 +61,7 @@ const Tabs = () => {
 
   useEffect(() => {
     getPortofolio()
-    getExperience()
+    getExperience()    
   },[])
 
   return (
@@ -82,7 +82,7 @@ const Tabs = () => {
             <div key={index} className='relative'>
               <Image 
                 // src='https://res.cloudinary.com/dnsqhf9cr/image/upload/v1710660215/wafpnxfhaqguey1upsra.png'
-                src={item.image != null ? item.image : '/img/worker/default.jpg'}
+                src={(item.image != null) ? item.image : '/img/worker/default.jpg'}
                 alt='1'
                 width={200}
                 height={200}

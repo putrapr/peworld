@@ -29,7 +29,7 @@ const Profile = async () => {
         <div className='max-sm:mx-4 mx-[4.5rem] max-sm:-mt-[4.5rem] -mt-20'>
           <Link href='/profile/edit'>
             <Image 
-              src= { (worker.photo == null) ? "/img/default.png" : worker.photo }
+              src= { (worker.photo == null) ? '/img/default.png' : worker.photo }
               alt="dp" 
               width={150} 
               height={150} 

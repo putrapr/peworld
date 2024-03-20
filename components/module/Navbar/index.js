@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react';
 import NavBeforeLogin from './navBeforeLogin';
 import NavAfterLogin from './navAfterLogin';

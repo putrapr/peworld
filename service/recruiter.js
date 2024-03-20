@@ -1,8 +1,9 @@
+'use server'
 import getCookie from './getCookie'
-const token = await getCookie('token')
 import { redirect } from 'next/navigation'
 
 export const getCompany = async () => {
+  const token = await getCookie('token')
   if (!token)
     return redirect('/login/recruiter')
 
@@ -10,8 +11,8 @@ export const getCompany = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_URL_BE+'/v1/recruiters/profile',{
       headers:{
         "Content-Type": "application/json",
-        // ...(token ? {"Cookie": `token=${token};path=/;expires=Session`}: {})
-        "Cookie": `token=${token};path=/;expires=Session`
+        ...(token ? {"Cookie": `token=${token};path=/;expires=Session`}: {})
+        // "Cookie": `token=${token};path=/;expires=Session`
       },
       credentials: "include",
       cache: 'no-store'

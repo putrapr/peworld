@@ -1,3 +1,4 @@
+'use server'
 import Image from 'next/image'
 import Link from 'next/link'
 // import Button from '@/components/base/Button'
@@ -8,13 +9,6 @@ import Tabs from '@/components/template/ProfileWorker/TabsProfile'
 const Profile = async () => {  
   const worker = await getProfile()
   const skills = await getSkills()
-  // const worker = {
-  //   name: 'a',
-  //   job_desk: 'b',
-  //   workplace: 'c',
-  //   description: 'd',
-  //   domicile: 'e'
-  // }
 
   return (
     <div className='bg-[#F6F7F8] max-sm:px-4 max-sm:py-12 px-[8.5rem] py-16'>

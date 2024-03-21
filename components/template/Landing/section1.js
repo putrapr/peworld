@@ -7,18 +7,18 @@ import Button from '@/components/base/Button'
 const Section1 = ({ className }) => {
   const router = useRouter()
   return (
-    <section className={`grid grid-cols-5 ${className}`}>
+    <section className={`max-sm:flex max-sm:flex-col grid grid-cols-5 ${className}`}>
       <div id='left-side' className='col-span-2'>
-        <div className='w-[450px] mt-32'>
-          <h1 className='text-5xl leading-normal'>Talenta terbaik negri untuk perubahan revolusi 4.0</h1>              
+        <div className='max-sm:w-full max-sm:mt-4 w-[450px] mt-32'>
+          <h1 className='max-sm:text-4xl text-5xl leading-normal'>Talenta terbaik negri untuk perubahan revolusi 4.0</h1>              
         </div>
-        <p className='text-lg text-[#46505C] mt-4'>
+        <p className='max-sm:w-full text-lg text-[#46505C] mt-4'>
           Karya terbaik berawal dari tim yang hebat
         </p>
         <p className='text-[#46505C]'>
           Ciptakan mulai dari sini
         </p>
-        <Button className='w-48 h-16 mt-14 text-sm'
+        <Button className='max-sm:my-8 w-48 h-16 mt-14 text-sm'
           onClick={() => router.push('/home')}
         >Mulai Dari Sekarang</Button>
       </div>

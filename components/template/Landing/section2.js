@@ -10,7 +10,7 @@ const Section2 = ({ className }) => {
   ]
 
   return (
-    <section className={`grid grid-cols-2 ${className}`}>
+    <section className={`max-sm:flex max-sm:flex-col grid grid-cols-2 ${className}`}>
       <div id='left-side' className='flex justify-end mr-10'>
         <Image 
           src='\img\landing\2.svg'
@@ -23,7 +23,7 @@ const Section2 = ({ className }) => {
         />
       </div>
       
-      <div id='right-side' className='mt-8 -ms-4 w-[520px]'>
+      <div id='right-side' className='max-sm:w-full max-sm:ms-4 mt-8 -ms-4 w-[520px]'>
         <h1 className='text-4xl'>Kenapa harus mencari talent di peworld</h1>
         {
           arrText.map((item, index) => (

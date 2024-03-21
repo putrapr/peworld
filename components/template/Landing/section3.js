@@ -6,10 +6,10 @@ const Section3 = ({ className }) => {
   const arrSkill2 = ['Golang', 'C++', 'Ruby', '10+ Bahasa lainnya']
 
   return (
-    <div className={`grid grid-cols-2 ${className}`}>
+    <div className={`max-sm:flex max-sm:flex-col grid grid-cols-2 ${className}`}>
       <div id='left-side' className='flex justify-end'>
-        <div className='-mr-20'>
-          <div className='w-[400px] mt-20'>
+        <div className='max-sm:mx-4 -mr-20'>
+          <div className='max-sm:w-full w-[400px] mt-20'>
             <h1 className='text-4xl'>Skill Talent</h1>              
           </div>
           <p className='text-lg text-[#46505C] mt-4'>
@@ -51,7 +51,7 @@ const Section3 = ({ className }) => {
         </div>
       </div>
 
-      <div id='right-side' className='flex justify-end ms-20'>
+      <div id='right-side' className='max-sm:ms-4 flex justify-end ms-20'>
         <Image 
           src='\img\landing\3.svg'
           alt='3'

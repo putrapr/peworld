@@ -23,13 +23,13 @@ const Section4 = ({ className }) => {
     }
   ]
   return (
-    <section className={`bg-[#FAFBFC] ${className}`}>
+    <section className={`bg-[#FAFBFC] max-sm:mx-4 ${className}`}>
       <div className='flex justify-center mb-14'>
         <h1 className='text-4xl'>Opini mereka tentang peworld</h1>
       </div>
       
       {/* Carousel */}
-      <div className='flex justify-center gap-6'>
+      <div className='flex max-sm:flex-col max-sm:items-center justify-center gap-6'>
         {
           data.map((item, index) => (
             <div key={index} className='w-80 h-[410px] p-12 bg-white flex flex-col items-center' style={{ filter: 'drop-shadow(0 5px 4px #e4e4ec)' }}>

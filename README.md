@@ -72,6 +72,10 @@ npm run dev
 |------------|---------------|
 |![Landing Page](https://drive.google.com/uc?export=view&id=1H9yfOnYcobI1y8ZkfRnOTbgdEScNLN9x) | ![Home Page](https://drive.google.com/uc?export=view&id=1OSReYVktmYl_upBylX671L93ZjVCPE84)|  
 
+| Notification Page | 
+|------------|
+|![Notification Page](https://drive.google.com/uc?export=view&id=1E-tWrziAm_9mtS57KDNt633s7eKdlk_W) | 
+
 | Profile Page | Edit Profile Page |
 |------------|---------------|
 |![Profile Page](https://drive.google.com/uc?export=view&id=1aqjNZC_rK0ecxSsUPqfSXFMtSo9vxanJ) | ![Edit Profile Page](https://drive.google.com/uc?export=view&id=1Q3-hAQjnl5jMyAcZr3Ds0FGaZTHpSjgn)|  
@@ -85,7 +89,11 @@ npm run dev
 
 | Worker Page | Hire Page |
 |------------|---------------|
-|![Worker Page](https://drive.google.com/uc?export=view&id=1eOu463QjOEJgW4yJUcV2gruUGEcxM82_) | ![Hire Page](https://drive.google.com/uc?export=view&id=1kfID0x-fM5ZLc5jxARmI-3juiOkDAInp)|  
+|![Worker Page](https://drive.google.com/uc?export=view&id=1eOu463QjOEJgW4yJUcV2gruUGEcxM82_) | ![Hire Page](https://drive.google.com/uc?export=view&id=1kfID0x-fM5ZLc5jxARmI-3juiOkDAInp)| 
+
+| Notification Page |
+|------------|
+|![Notofication Page](https://drive.google.com/uc?export=view&id=1dqPwXUnFdyCbgML7P0Z9cNe6Q7kWFqU7) |
 
 | Profile Page | Edit Profile Page |
 |------------|---------------|
